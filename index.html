@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUTECIA TRANSPORTS – Transport régional & inter-régional</title>
+
+<!-- AOS ANIMATION -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+body { margin:0; font-family:Arial, Helvetica, sans-serif; color:#1f2937; }
+header {
+  background:linear-gradient(rgba(15,23,42,.85),rgba(15,23,42,.85)),
+  url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c7');
+  background-size:cover;
+  color:white;
+  padding:120px 20px;
+  text-align:center;
+}
+header h1 { font-size:48px; margin-bottom:15px; }
+header p { font-size:20px; max-width:800px; margin:auto; }
+header a {
+  display:inline-block;
+  margin-top:30px;
+  background:#2563eb;
+  color:white;
+  padding:16px 36px;
+  border-radius:30px;
+  text-decoration:none;
+  transition:.3s;
+}
+header a:hover { background:#1e40af; transform:scale(1.05); }
+
+section { padding:90px 20px; max-width:1100px; margin:auto; }
+h2 { font-size:34px; margin-bottom:25px; text-align:center; }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.card {
+  background:#f8fafc;
+  padding:35px;
+  border-radius:15px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transition:.4s;
+}
+.card:hover { transform:translateY(-10px); }
+
+.clients ul { list-style:none; padding:0; columns:2; text-align:center; }
+.clients li { font-weight:600; padding:8px 0; }
+
+footer {
+  background:#020617;
+  color:#cbd5f5;
+  padding:60px 20px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header data-aos="fade">
+<h1>LUTECIA TRANSPORTS</h1>
+<p>Transport régional & inter-régional • Navettes dédiées • Mise à disposition</p>
+<a href="#contact">Demande de devis</a>
+</header>
+
+<section data-aos="fade-up">
+<h2>Qui sommes-nous</h2>
+<p>LUTECIA TRANSPORTS est spécialisée dans le <strong>transport routier de fret de proximité</strong>, exclusivement en <strong>régional et inter-régional</strong>.</p>
+<p><strong>Extension ponctuelle possible</strong> selon besoin client.</p>
+</section>
+
+<section>
+<h2 data-aos="fade-up">Nos services</h2>
+<div class="grid">
+<div class="card" data-aos="zoom-in">
+<h3>🚚 Transport régional</h3>
+<p>Flux réguliers ou ponctuels, respect strict des délais.</p>
+</div>
+<div class="card" data-aos="zoom-in" data-aos-delay="100">
+<h3>🔁 Navettes dédiées</h3>
+<p>Tournées fixes pour plateformes logistiques.</p>
+</div>
+<div class="card" data-aos="zoom-in" data-aos-delay="200">
+<h3>👷 Mise à disposition</h3>
+<p>Conducteurs qualifiés intégrés aux opérations.</p>
+</div>
+</div>
+</section>
+
+<section class="clients" data-aos="fade-up">
+<h2>Ils nous font confiance</h2>
+<ul>
+<li>CAT</li>
+<li>Kuehne + Nagel</li>
+<li>DSV – Schenker</li>
+<li>CEVA Logistics</li>
+<li>Dachser</li>
+<li>GT Solutions</li>
+<li>La Poste</li>
+</ul>
+</section>
+
+<section id="contact" data-aos="fade-up">
+<h2>Contact</h2>
+<div class="card">
+<h3>Riad Mehloul</h3>
+<p>📞 +33 7 83 67 37 83<br>
+✉️ luteciatransports@hotmail.fr</p>
+</div>
+</section>
+
+<footer>
+<p>© 2025 LUTECIA TRANSPORTS</p>
+</footer>
+
+<!-- AOS SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
