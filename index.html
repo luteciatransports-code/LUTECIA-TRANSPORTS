@@ -5,35 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUTECIA TRANSPORTS – Transport régional & inter-régional</title>
 
-<!-- AOS ANIMATION -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
 body { margin:0; font-family:Arial, Helvetica, sans-serif; color:#1f2937; }
+section { padding:100px 20px; max-width:1200px; margin:auto; }
+
 header {
-  background:linear-gradient(rgba(15,23,42,.85),rgba(15,23,42,.85)),
-  url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c7');
-  background-size:cover;
+  position:relative;
+  height:100vh;
+  overflow:hidden;
   color:white;
-  padding:120px 20px;
+}
+header video {
+  position:absolute;
+  top:50%; left:50%;
+  min-width:100%; min-height:100%;
+  transform:translate(-50%,-50%);
+  filter:brightness(.45);
+}
+.hero {
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
 }
-header h1 { font-size:48px; margin-bottom:15px; }
-header p { font-size:20px; max-width:800px; margin:auto; }
-header a {
+.hero h1 { font-size:56px; margin-bottom:20px; }
+.hero p { font-size:22px; max-width:900px; margin:auto; }
+
+.btn {
   display:inline-block;
   margin-top:30px;
+  padding:16px 40px;
   background:#2563eb;
   color:white;
-  padding:16px 36px;
   border-radius:30px;
   text-decoration:none;
   transition:.3s;
 }
-header a:hover { background:#1e40af; transform:scale(1.05); }
-
-section { padding:90px 20px; max-width:1100px; margin:auto; }
-h2 { font-size:34px; margin-bottom:25px; text-align:center; }
+.btn:hover { background:#1e40af; transform:scale(1.05); }
 
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
 .card {
@@ -41,56 +52,85 @@ h2 { font-size:34px; margin-bottom:25px; text-align:center; }
   padding:35px;
   border-radius:15px;
   box-shadow:0 20px 40px rgba(0,0,0,.08);
-  transition:.4s;
 }
-.card:hover { transform:translateY(-10px); }
 
-.clients ul { list-style:none; padding:0; columns:2; text-align:center; }
-.clients li { font-weight:600; padding:8px 0; }
+.clients ul { columns:2; list-style:none; padding:0; text-align:center; }
+.clients li { padding:10px 0; font-weight:600; }
 
 footer {
   background:#020617;
   color:#cbd5f5;
-  padding:60px 20px;
   text-align:center;
+  padding:70px 20px;
 }
 </style>
 </head>
 
 <body>
 
-<header data-aos="fade">
+<header>
+<video autoplay muted loop playsinline>
+  <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+
+<div class="hero">
+<div data-aos="fade">
 <h1>LUTECIA TRANSPORTS</h1>
-<p>Transport régional & inter-régional • Navettes dédiées • Mise à disposition</p>
-<a href="#contact">Demande de devis</a>
+<p>L’envie de servir tout au long du chemin</p>
+<a href="#contact" class="btn">Contact</a>
+</div>
+</div>
 </header>
 
 <section data-aos="fade-up">
-<h2>Qui sommes-nous</h2>
-<p>LUTECIA TRANSPORTS est spécialisée dans le <strong>transport routier de fret de proximité</strong>, exclusivement en <strong>régional et inter-régional</strong>.</p>
-<p><strong>Extension ponctuelle possible</strong> selon besoin client.</p>
+<h2>Présentation générale</h2>
+<p><strong>LUTECIA TRANSPORTS</strong> est une société à responsabilité limitée spécialisée dans le <strong>transport routier de fret de proximité</strong>.</p>
+<p><strong>Siège :</strong> Le Thillay (95500)<br>
+<strong>Activité :</strong> transport régional et inter-régional<br>
+<strong>Extension ponctuelle possible</strong> selon le besoin spécifique du client<br>
+<strong>Expertise :</strong> livraison rapide, poids lourd et super lourd</p>
+</section>
+
+<section data-aos="fade-up">
+<h2>Chiffres clés – Fin 2025</h2>
+<ul>
+<li>Plus de <strong>15 ans d’expérience</strong></li>
+<li>Environ <strong>25 salariés</strong></li>
+<li><strong>30 véhicules</strong> (porteurs, tracteurs, semi-remorques)</li>
+<li><strong>20+ contrats longue durée</strong></li>
+<li>Chiffre d’affaires 2025 : <strong>en croissance continue</strong></li>
+</ul>
+<p>📈 Croissance maîtrisée portée par la fidélisation clients et l’optimisation opérationnelle.</p>
+</section>
+
+<section data-aos="fade-up">
+<h2>Notre évolution et notre croissance</h2>
+<p>Depuis 2021, LUTECIA TRANSPORTS connaît une croissance régulière et structurée :</p>
+<ul>
+<li>Renforcement et modernisation de la flotte</li>
+<li>Développement de contrats longue durée avec des clients majeurs</li>
+<li>Structuration des équipes d’exploitation et de conduite</li>
+<li>Amélioration continue de la qualité de service</li>
+</ul>
+<p>🎯 Objectif : croître durablement sans compromettre la qualité.</p>
 </section>
 
 <section>
-<h2 data-aos="fade-up">Nos services</h2>
+<h2 data-aos="fade-up">Nos solutions</h2>
 <div class="grid">
-<div class="card" data-aos="zoom-in">
-<h3>🚚 Transport régional</h3>
-<p>Flux réguliers ou ponctuels, respect strict des délais.</p>
+<div class="card" data-aos="fade-up">
+<h3>🚚 Navettes régulières</h3>
+<p>Tournées fixes ou ajustables, continuité de service, respect strict des délais. Solutions idéales pour plateformes logistiques et hubs régionaux.</p>
 </div>
-<div class="card" data-aos="zoom-in" data-aos-delay="100">
-<h3>🔁 Navettes dédiées</h3>
-<p>Tournées fixes pour plateformes logistiques.</p>
-</div>
-<div class="card" data-aos="zoom-in" data-aos-delay="200">
+<div class="card" data-aos="fade-up" data-aos-delay="100">
 <h3>👷 Mise à disposition</h3>
-<p>Conducteurs qualifiés intégrés aux opérations.</p>
+<p>Véhicules avec conducteurs qualifiés, flexibilité courte à longue durée, gestion administrative assurée.</p>
 </div>
 </div>
 </section>
 
 <section class="clients" data-aos="fade-up">
-<h2>Ils nous font confiance</h2>
+<h2>Nos principaux clients</h2>
 <ul>
 <li>CAT</li>
 <li>Kuehne + Nagel</li>
@@ -103,22 +143,22 @@ footer {
 </section>
 
 <section id="contact" data-aos="fade-up">
-<h2>Contact</h2>
+<h2>Votre interlocuteur privilégié</h2>
 <div class="card">
 <h3>Riad Mehloul</h3>
+<p>Interlocuteur opérationnel et commercial</p>
 <p>📞 +33 7 83 67 37 83<br>
 ✉️ luteciatransports@hotmail.fr</p>
 </div>
 </section>
 
 <footer>
-<p>© 2025 LUTECIA TRANSPORTS</p>
+<p>© 2025 LUTECIA TRANSPORTS – Transport & Logistique</p>
 </footer>
 
-<!-- AOS SCRIPT -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({ duration: 1000, once: true });
+AOS.init({ duration: 1200, once: true });
 </script>
 
 </body>
