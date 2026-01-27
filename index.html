@@ -74,9 +74,9 @@
             100% { transform: scale(1); }
         }
         
-        @keyframes truckMove {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100vw); }
+        @keyframes professionalMove {
+            0% { transform: translateX(-100%) scale(1); opacity: 0.8; }
+            100% { transform: translateX(100vw) scale(1.1); opacity: 1; }
         }
         
         /* Header & Navigation */
@@ -186,7 +186,7 @@
             transform: scale(1.1);
         }
         
-        /* Hero Section avec VIDEO PRO */
+        /* Hero Section avec VIDEO PRO MODIFIÉE */
         .hero {
             position: relative;
             height: 100vh;
@@ -207,6 +207,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
+            filter: brightness(0.7) contrast(1.1);
         }
         
         .hero-overlay {
@@ -215,7 +216,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(26, 58, 95, 0.9) 0%, rgba(0, 86, 166, 0.85) 100%);
+            background: linear-gradient(135deg, 
+                rgba(26, 58, 95, 0.85) 0%, 
+                rgba(0, 86, 166, 0.75) 50%, 
+                rgba(0, 168, 89, 0.6) 100%);
             z-index: -1;
         }
         
@@ -224,28 +228,30 @@
             padding: 0 20px;
             z-index: 1;
             animation: fadeIn 1s ease-out 0.5s both;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
         
         .hero h2 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             color: white;
             margin-bottom: 25px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             line-height: 1.2;
+            font-weight: 800;
         }
         
         .hero-highlight {
             color: var(--accent);
             display: block;
             font-size: 1.1em;
+            text-shadow: 0 0 10px rgba(230, 164, 0, 0.5);
         }
         
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin: 0 auto 50px;
             color: rgba(255, 255, 255, 0.95);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             max-width: 800px;
+            font-weight: 300;
         }
         
         .btn {
@@ -264,6 +270,23 @@
             cursor: pointer;
             box-shadow: 0 8px 25px rgba(230, 164, 0, 0.3);
             animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
@@ -277,45 +300,69 @@
             margin-left: 20px;
         }
         
-        /* Marquee Animation */
-        .truck-marquee {
+        /* Nouveau : Marquee Pro */
+        .truck-marquee-pro {
             position: absolute;
-            bottom: 20px;
+            bottom: 0;
             width: 100%;
-            height: 60px;
+            height: 100px;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 10px 0;
-        }
-        
-        .truck-icons {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             display: flex;
-            gap: 40px;
-            animation: truckMove 25s linear infinite;
+            align-items: flex-end;
+            padding-bottom: 20px;
         }
         
-        .truck-icon {
+        .marquee-container {
+            display: flex;
+            gap: 60px;
+            animation: professionalMove 20s linear infinite;
+        }
+        
+        .truck-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 250px;
+        }
+        
+        .truck-icon-pro {
             font-size: 2.5rem;
             color: var(--renault);
         }
         
-        .truck-icon.mercedes {
+        .truck-icon-pro.mercedes {
             color: var(--mercedes);
+        }
+        
+        .truck-info {
+            color: white;
+        }
+        
+        .truck-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
         }
         
         /* Écoresponsable Banner */
         .eco-banner {
-            background: linear-gradient(135deg, var(--eco-green) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, var(--dark) 100%);
             color: white;
             padding: 25px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid var(--eco-green);
+            border-bottom: 3px solid var(--eco-green);
         }
         
         .eco-banner::before {
-            content: '♻️';
+            content: '🚛 ♻️';
             position: absolute;
             font-size: 8rem;
             opacity: 0.1;
@@ -333,6 +380,7 @@
         .eco-icon {
             font-size: 2.5rem;
             animation: float 3s ease-in-out infinite;
+            color: var(--eco-green);
         }
         
         /* Sections générales */
@@ -374,7 +422,11 @@
             line-height: 1.6;
         }
         
-        /* Présentation */
+        /* Présentation avec vidéo intégrée */
+        .presentation {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
         .presentation-content {
             display: flex;
             align-items: center;
@@ -398,9 +450,15 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background: var(--light);
+            background: white;
             border-radius: 8px;
             border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
         }
         
         .feature i {
@@ -411,48 +469,78 @@
         .presentation-visual {
             flex: 1;
             position: relative;
-        }
-        
-        .floating-truck {
-            font-size: 8rem;
-            color: var(--primary);
-            opacity: 0.8;
-            animation: float 5s ease-in-out infinite;
-            position: absolute;
-            right: 50px;
-            top: -30px;
-            z-index: -1;
-        }
-        
-        .brands-showcase {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--light);
             border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
-        .brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+        .presentation-video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
         }
         
-        .brand-icon {
-            font-size: 3rem;
-            color: var(--renault);
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
         }
         
-        .brand-icon.mercedes {
-            color: var(--mercedes);
+        /* Nouvelle section vidéo portfolio */
+        .video-portfolio {
+            background: var(--dark);
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .video-portfolio h2 {
+            color: white;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+        
+        .portfolio-video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .video-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px;
+            color: white;
         }
         
         /* Nos Spécialités */
         .specialties {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: white;
         }
         
         .specialties-grid {
@@ -471,6 +559,7 @@
             position: relative;
             overflow: hidden;
             border-top: 5px solid var(--secondary);
+            border: 1px solid #e0e0e0;
         }
         
         .specialty-card::before {
@@ -532,6 +621,7 @@
             box-shadow: 0 0 30px rgba(0, 86, 166, 0.4);
             position: relative;
             z-index: 2;
+            animation: pulse 3s infinite;
         }
         
         .zone-circles {
@@ -586,7 +676,7 @@
         
         /* Services supplémentaires */
         .additional-services {
-            background: var(--light);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
         .services-grid {
@@ -610,7 +700,7 @@
         }
         
         .service-certificate {
-            background: linear-gradient(135deg, var(--eco-green) 0%, #20c997 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, #1a3a5f 100%);
             color: white;
             padding: 40px;
             border-radius: 15px;
@@ -618,12 +708,14 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--eco-green);
         }
         
         .certificate-icon {
             font-size: 4rem;
             margin-bottom: 20px;
             animation: float 4s ease-in-out infinite;
+            color: var(--eco-green);
         }
         
         /* Contact */
@@ -640,6 +732,7 @@
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
         
         .contact-card::before {
@@ -673,6 +766,7 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
         }
         
         .form-group {
@@ -800,6 +894,9 @@
                 padding: 15px 25px;
                 font-size: 1rem;
             }
+            .truck-marquee-pro {
+                display: none; /* Cache sur mobile pour performance */
+            }
         }
         
         @media (max-width: 768px) {
@@ -854,6 +951,10 @@
             .circle-2, .circle-3 {
                 display: none;
             }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -896,6 +997,7 @@
                 <ul>
                     <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
                     <li><a href="#presentation"><i class="fas fa-info-circle"></i> Présentation</a></li>
+                    <li><a href="#portfolio"><i class="fas fa-play-circle"></i> Vidéos</a></li>
                     <li><a href="#specialites"><i class="fas fa-star"></i> Nos Spécialités</a></li>
                     <li><a href="#zone"><i class="fas fa-map-marked-alt"></i> Zone d'intervention</a></li>
                     <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
@@ -904,41 +1006,56 @@
         </div>
     </header>
 
-    <!-- Hero Section avec Vidéo Pro -->
+    <!-- Hero Section avec NOUVELLE VIDÉO PRO -->
     <section id="accueil" class="hero">
+        <!-- VIDÉO 1 : Semi-remorque sur autoroute (vue pro) -->
         <video autoplay muted loop playsinline class="hero-video">
-            <!-- Vidéo professionnelle de semi-remorques Renault/Mercedes -->
             <source src="https://assets.mixkit.co/videos/preview/mixkit-semi-truck-on-the-highway-40819-large.mp4" type="video/mp4">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-on-the-highway-1633-large.mp4" type="video/mp4">
+            <!-- Alternative haute qualité -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-trucks-on-a-highway-at-sunset-40823-large.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
             <h2>
-                Spécialiste des <span class="hero-highlight">derniers kilomètres</span><br>
-                en <span class="hero-highlight">Nord Parisien</span>
+                <span class="hero-highlight">EXPERT</span> TRANSPORT NORD PARISIEN
             </h2>
-            <p>Transport routier écologique avec flotte Renault & Mercedes. Navettes rapides, débarras certifiés, logistique sur-mesure.</p>
+            <p>Flotte professionnelle Renault & Mercedes • Derniers kilomètres • Navettes rapides • Débarras certifiés</p>
             
             <div class="btn-container">
                 <a href="#contact" class="btn">
-                    <i class="fas fa-phone-alt"></i> Demander un devis
+                    <i class="fas fa-file-invoice-dollar"></i> Devis immédiat
                 </a>
-                <a href="#specialites" class="btn btn-secondary">
-                    <i class="fas fa-truck"></i> Nos services
+                <a href="tel:+33783673783" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> 07 83 67 37 83
                 </a>
             </div>
         </div>
         
-        <!-- Animation camions -->
-        <div class="truck-marquee">
-            <div class="truck-icons">
-                <i class="fas fa-truck-moving truck-icon"></i>
-                <i class="fas fa-truck truck-icon mercedes"></i>
-                <i class="fas fa-truck-pickup truck-icon"></i>
-                <i class="fas fa-shipping-fast truck-icon"></i>
-                <i class="fas fa-truck-moving truck-icon"></i>
-                <i class="fas fa-truck truck-icon mercedes"></i>
+        <!-- NOUVEAU : Marquee professionnel -->
+        <div class="truck-marquee-pro">
+            <div class="marquee-container">
+                <div class="truck-card">
+                    <i class="fas fa-truck-moving truck-icon-pro"></i>
+                    <div class="truck-info">
+                        <div class="truck-brand">RENAULT TRUCKS</div>
+                        <div>Semi-remorques</div>
+                    </div>
+                </div>
+                <div class="truck-card">
+                    <i class="fas fa-truck truck-icon-pro mercedes"></i>
+                    <div class="truck-info">
+                        <div class="truck-brand">MERCEDES-BENZ</div>
+                        <div>Camions premium</div>
+                    </div>
+                </div>
+                <div class="truck-card">
+                    <i class="fas fa-shield-alt truck-icon-pro"></i>
+                    <div class="truck-info">
+                        <div class="truck-brand">CERTIFIÉ</div>
+                        <div>Transport écologique</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -951,84 +1068,119 @@
                     <i class="fas fa-leaf"></i>
                 </div>
                 <div>
-                    <h3 style="color: white; margin-bottom: 5px;">Transport Écoresponsable</h3>
-                    <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto;">
-                        Flotte moderne Renault & Mercedes optimisée pour réduire l'empreinte carbone. Certificats de destruction écologique.
+                    <h3 style="color: white; margin-bottom: 5px; font-size: 1.8rem;">TRANSPORT HAUT DE GAMME ÉCORESPONSABLE</h3>
+                    <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                        Flotte Renault & Mercedes Euro 6 • Optimisation carburant • Certificats de destruction écologique • Logistique durable
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Présentation -->
+    <!-- Présentation avec vidéo -->
     <section id="presentation" class="presentation">
         <div class="container">
             <div class="section-title">
-                <h2>Expert Transport Nord Parisien</h2>
+                <h2>Expertise Transport Professionnelle</h2>
                 <div class="section-subtitle">
-                    Basés au Thillay (95), nous maîtrisons parfaitement la logistique des derniers kilomètres en région parisienne avec notre flotte de semi-remorques Renault et Mercedes.
+                    Basés stratégiquement au Thillay (95), nous maîtrisons la logistique complexe du Nord Parisien avec une flotte moderne et des process optimisés.
                 </div>
             </div>
             
             <div class="presentation-content">
                 <div class="presentation-text">
-                    <h3>Votre partenaire logistique de confiance</h3>
-                    <p>LUTECIA TRANSPORTS est le spécialiste du transport routier dans le Nord Parisien, avec une expertise unique des problématiques de livraison en milieu urbain et péri-urbain.</p>
+                    <h3>Votre partenaire logistique premium</h3>
+                    <p>LUTECIA TRANSPORTS combine expertise terrain et équipements haut de gamme pour des solutions de transport sur-mesure.</p>
                     
                     <div class="presentation-features">
                         <div class="feature">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-award"></i>
                             <div>
-                                <strong>Spécialiste Nord Parisien</strong>
-                                <p>Connaissance parfaite du terrain</p>
+                                <strong>Expert Nord Parisien</strong>
+                                <p>Maîtrise des contraintes urbaines</p>
                             </div>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-truck"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <div>
-                                <strong>Flotte Renault/Mercedes</strong>
-                                <p>Semi-remorques modernes</p>
+                                <strong>Flotte Haute Performance</strong>
+                                <p>Renault & Mercedes dernier cri</p>
                             </div>
                         </div>
                         <div class="feature">
                             <i class="fas fa-bolt"></i>
                             <div>
-                                <strong>Navettes rapides</strong>
+                                <strong>Navettes Express</strong>
                                 <p>Petite & grande couronne</p>
                             </div>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-recycle"></i>
+                            <i class="fas fa-clipboard-check"></i>
                             <div>
-                                <strong>Débarras écologique</strong>
-                                <p>Certificats de destruction</p>
+                                <strong>Certification Complète</strong>
+                                <p>Traçabilité & écologie</p>
                             </div>
                         </div>
                     </div>
                     
-                    <p>Nous intervenons pour les derniers kilomètres complexes, les navettes régulières, et proposons des solutions de débarras complet d'entrepôts avec traçabilité totale.</p>
+                    <p>Notre approche professionnelle garantit fiabilité, réactivité et respect des délais, même pour les missions les plus complexes.</p>
                 </div>
                 
                 <div class="presentation-visual">
-                    <div class="floating-truck">
-                        <i class="fas fa-truck-moving"></i>
+                    <!-- VIDÉO 2 : Camion en ville (professionnel) -->
+                    <video autoplay muted loop playsinline class="presentation-video">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-driving-through-a-city-at-night-40821-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h4 style="color: white; margin: 0;">FLOTTE PROFESSIONNELLE EN ACTION</h4>
+                        <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0;">Livraisons urbaines optimisées</p>
                     </div>
-                    
-                    <div class="brands-showcase">
-                        <div class="brand">
-                            <div class="brand-icon">
-                                <i class="fas fa-truck-moving"></i>
-                            </div>
-                            <strong>Renault Trucks</strong>
-                            <small>Semi-remorques</small>
-                        </div>
-                        <div class="brand">
-                            <div class="brand-icon mercedes">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <strong>Mercedes-Benz</strong>
-                            <small>Camions premium</small>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Vidéo Professionnel -->
+    <section id="portfolio" class="video-portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Flotte en Action</h2>
+                <div class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                    Découvrez nos équipements professionnels et notre expertise terrain
+                </div>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <!-- VIDÉO 3 : Semi-remorque détail pro -->
+                    <video autoplay muted loop playsinline class="portfolio-video">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-truck-cab-while-driving-40825-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h4>ÉQUIPEMENTS HAUT DE GAMME</h4>
+                        <p>Semi-remorques équipées</p>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <!-- VIDÉO 4 : Logistique entrepôt -->
+                    <video autoplay muted loop playsinline class="portfolio-video">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-worker-loading-a-pallet-onto-a-truck-40625-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h4>LOGISTIQUE PRÉCISE</h4>
+                        <p>Chargement professionnel</p>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <!-- VIDÉO 5 : Transport autoroute -->
+                    <video autoplay muted loop playsinline class="portfolio-video">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-on-a-country-road-at-sunset-40824-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h4>TRANSPORT NATIONAL</h4>
+                        <p>France entière depuis l'IDF</p>
                     </div>
                 </div>
             </div>
@@ -1039,52 +1191,52 @@
     <section id="specialites" class="specialties">
         <div class="container">
             <div class="section-title">
-                <h2>Nos Services Spécialisés</h2>
+                <h2>Services Haut de Gamme</h2>
                 <div class="section-subtitle">
-                    Des solutions adaptées aux besoins spécifiques du transport en Île-de-France et au-delà
+                    Des solutions premium adaptées aux exigences du transport moderne
                 </div>
             </div>
             
             <div class="specialties-grid">
                 <div class="specialty-card">
-                    <div class="specialty-badge">Spécialité</div>
+                    <div class="specialty-badge">Expert</div>
                     <div class="specialty-icon">
                         <i class="fas fa-road"></i>
                     </div>
-                    <h3>Derniers Kilomètres</h3>
-                    <p>Livraison précise en milieu urbain complexe du Nord Parisien. Expertise des contraintes de circulation et de stationnement.</p>
+                    <h3>Derniers Kilomètres Pro</h3>
+                    <p>Livraison ultra-précise en milieu urbain complexe avec équipements adaptés pour les zones restreintes.</p>
                     <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li>Livraison centre-ville</li>
-                        <li>Zones piétonnes</li>
-                        <li>Quartiers restreints</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Centres-villes historiques</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Zones piétonnes</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Quartiers sensibles</li>
                     </ul>
                 </div>
                 
                 <div class="specialty-card">
-                    <div class="specialty-badge">Express</div>
+                    <div class="specialty-badge">Rapide</div>
                     <div class="specialty-icon">
                         <i class="fas fa-shuttle-van"></i>
                     </div>
-                    <h3>Navettes Rapides</h3>
-                    <p>Circuits optimisés en petite et grande couronne. Solutions sur-mesure pour vos flux réguliers avec notre flotte Renault/Mercedes.</p>
+                    <h3>Navettes Premium</h3>
+                    <p>Circuits optimisés avec tracking GPS. Véhicules Mercedes et Renault pour fiabilité maximale.</p>
                     <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li>Paris & proche banlieue</li>
-                        <li>Grande couronne</li>
-                        <li>France entière</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Paris & proche banlieue</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Grande couronne</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> France entière</li>
                     </ul>
                 </div>
                 
                 <div class="specialty-card">
-                    <div class="specialty-badge">Écologique</div>
+                    <div class="specialty-badge">Certifié</div>
                     <div class="specialty-icon">
                         <i class="fas fa-warehouse"></i>
                     </div>
-                    <h3>Débarras d'Entrepôts</h3>
-                    <p>Vidange complète d'entrepôts, bureaux, archives. Certificat de destruction fourni. Tri et recyclage écoresponsable.</p>
+                    <h3>Débarras Pro</h3>
+                    <p>Vidange complète avec certification. Traçabilité totale et recyclage écologique professionnel.</p>
                     <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li>Entrepôts commerciaux</li>
-                        <li>Archives d'entreprise</li>
-                        <li>Bureaux & locaux</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Entrepôts industriels</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Archives d'entreprise</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Bureaux & locaux</li>
                     </ul>
                 </div>
             </div>
@@ -1095,9 +1247,9 @@
     <section id="zone" class="zone">
         <div class="container">
             <div class="section-title">
-                <h2>Zone d'Intervention</h2>
+                <h2>Rayon d'Action Professionnel</h2>
                 <div class="section-subtitle">
-                    Spécialistes du Nord Parisien avec capacité d'intervention nationale au départ de l'Île-de-France
+                    Expertise Nord Parisienne couplée à une capacité nationale
                 </div>
             </div>
             
@@ -1115,20 +1267,20 @@
                 
                 <div class="zone-list">
                     <div class="zone-item highlight">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-crown"></i>
                         <span>SPÉCIALISTE NORD PARISIEN</span>
                     </div>
                     <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Petite Couronne (Rapide)</span>
+                        <i class="fas fa-bolt"></i>
+                        <span>Petite Couronne (Express)</span>
                     </div>
                     <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-expand-arrows-alt"></i>
                         <span>Grande Couronne</span>
                     </div>
                     <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>France entière</span>
+                        <i class="fas fa-map"></i>
+                        <span>France Entière</span>
                     </div>
                 </div>
             </div>
@@ -1139,28 +1291,28 @@
     <section class="additional-services">
         <div class="container">
             <div class="section-title">
-                <h2>Services Complets</h2>
+                <h2>Prestations Complémentaires</h2>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <h4><i class="fas fa-truck-loading"></i> Transport Inter-régional</h4>
-                    <p>Au départ de l'Île-de-France vers toute la France avec nos semi-remorques Renault et Mercedes.</p>
+                    <h4><i class="fas fa-truck-loading"></i> Transport Inter-régional Pro</h4>
+                    <p>Au départ de l'Île-de-France vers toute la France avec flotte moderne et suivi GPS.</p>
                 </div>
                 
                 <div class="service-card">
-                    <h4><i class="fas fa-users"></i> Véhicules avec Conducteur</h4>
-                    <p>Mise à disposition de chauffeurs professionnels pour vos besoins ponctuels ou réguliers.</p>
+                    <h4><i class="fas fa-users"></i> Chauffeurs Professionnels</h4>
+                    <p>Conducteurs qualifiés avec formation spécifique aux contraintes urbaines.</p>
                 </div>
                 
                 <div class="service-card">
-                    <h4><i class="fas fa-expand-arrows-alt"></i> Extension de Capacité</h4>
-                    <p>Renforts ponctuels pour faire face à vos pics d'activité saisonniers ou exceptionnels.</p>
+                    <h4><i class="fas fa-expand-arrows-alt"></i> Renforts Capacitaires</h4>
+                    <p>Solutions flexibles pour pics d'activité avec matériel adapté.</p>
                 </div>
                 
                 <div class="service-card">
-                    <h4><i class="fas fa-clipboard-check"></i> Logistique Sur-Mesure</h4>
-                    <p>Étude et optimisation de vos flux logistiques pour une efficacité maximale.</p>
+                    <h4><i class="fas fa-clipboard-check"></i> Audit Logistique</h4>
+                    <p>Analyse et optimisation de vos flux pour performance maximale.</p>
                 </div>
             </div>
             
@@ -1168,9 +1320,9 @@
                 <div class="certificate-icon">
                     <i class="fas fa-file-certificate"></i>
                 </div>
-                <h3 style="color: white;">Certificat de Destruction Garanti</h3>
-                <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 20px auto;">
-                    Pour tous nos services de débarras, nous fournissons un certificat de destruction officiel, garantissant la traçabilité complète et le respect des normes environnementales.
+                <h3 style="color: white;">CERTIFICATION PROFESSIONNELLE</h3>
+                <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 20px auto; font-size: 1.1rem;">
+                    Pour tous nos services, nous garantissons : traçabilité complète, certificats de destruction officiels, conformité réglementaire et respect des normes environnementales les plus strictes.
                 </p>
             </div>
         </div>
@@ -1180,94 +1332,91 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contactez-nous</h2>
+                <h2>Contact Professionnel</h2>
                 <div class="section-subtitle">
-                    Demandez un devis personnalisé pour vos besoins en transport et logistique
+                    Demandez une consultation sur-mesure pour vos besoins logistiques
                 </div>
             </div>
             
             <div class="contact-container">
                 <div class="contact-card">
-                    <h3>Coordonnées</h3>
+                    <h3>Coordonnées Directes</h3>
                     
                     <div class="contact-detail">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user-tie"></i>
                         <div>
                             <h4>Riad Mehloul</h4>
-                            <p>Interlocuteur opérationnel et commercial</p>
+                            <p>Directeur Opérationnel & Commercial</p>
                         </div>
                     </div>
                     
                     <div class="contact-detail">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone-alt"></i>
                         <div>
-                            <h4>Téléphone</h4>
-                            <a href="tel:+33783673783" style="color: var(--primary); text-decoration: none; font-weight: 600;">+33 7 83 67 37 83</a>
+                            <h4>Téléphone Direct</h4>
+                            <a href="tel:+33783673783" style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1.1rem;">+33 7 83 67 37 83</a>
                         </div>
                     </div>
                     
                     <div class="contact-detail">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>Email</h4>
-                            <a href="mailto:luteciatransports@hotmail.fr" style="color: var(--primary); text-decoration: none;">luteciatransports@hotmail.fr</a>
+                            <h4>Email Professionnel</h4>
+                            <a href="mailto:luteciatransports@hotmail.fr" style="color: var(--primary); text-decoration: none; font-weight: 500;">luteciatransports@hotmail.fr</a>
                         </div>
                     </div>
                     
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>Siège opérationnel</h4>
-                            <p>Le Thillay (95500)<br>Paris Nord, France</p>
+                            <h4>Base Opérationnelle</h4>
+                            <p style="font-weight: 500;">Le Thillay (95500)<br>Paris Nord, France</p>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <h4>Horaires Professionnels</h4>
+                        <p>Lundi - Vendredi: 7h00 - 19h00<br>Samedi: 8h00 - 14h00<br>Urgences: 7j/7</p>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Demande de devis</h3>
+                    <h3>Devis Personnalisé</h3>
                     
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nom complet *" required>
+                            <input type="text" class="form-control" placeholder="Société *" required>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email *" required>
+                            <input type="text" class="form-control" placeholder="Nom & Prénom *" required>
                         </div>
                         
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Téléphone">
+                            <input type="email" class="form-control" placeholder="Email professionnel *" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Téléphone *" required>
                         </div>
                         
                         <div class="form-group">
                             <select class="form-control" required>
-                                <option value="">Type de service *</option>
+                                <option value="">Service demandé *</option>
                                 <option>Derniers kilomètres Nord Parisien</option>
                                 <option>Navettes petite/grande couronne</option>
-                                <option>Débarras d'entrepôt avec certificat</option>
-                                <option>Transport inter-régional</option>
-                                <option>Autre demande</option>
+                                <option>Débarras professionnel avec certificat</option>
+                                <option>Transport national</option>
+                                <option>Consultation logistique</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Détails de votre demande *" required></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Détails de votre projet *" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Envoyer la demande
+                            <i class="fas fa-paper-plane"></i> Soumettre la demande
                         </button>
                     </form>
                 </div>
@@ -1281,48 +1430,48 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>LUTECIA TRANSPORTS</h3>
-                    <p>Spécialiste du transport Nord Parisien et des derniers kilomètres. Flotte Renault & Mercedes écoresponsable.</p>
+                    <p>Expert transport Nord Parisien. Flotte Renault & Mercedes haut de gamme. Solutions logistiques professionnelles.</p>
                     <div class="tagline" style="color: rgba(255,255,255,0.9); margin-top: 15px;">
-                        <i class="fas fa-leaf"></i>
-                        Transport écologique certifié
+                        <i class="fas fa-award"></i>
+                        Professionnalisme & Fiabilité
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Services</h3>
+                    <h3>Expertises</h3>
                     <ul class="footer-links">
                         <li><a href="#specialites"><i class="fas fa-road"></i> Derniers kilomètres</a></li>
-                        <li><a href="#specialites"><i class="fas fa-shuttle-van"></i> Navettes rapides</a></li>
-                        <li><a href="#specialites"><i class="fas fa-warehouse"></i> Débarras d'entrepôts</a></li>
+                        <li><a href="#specialites"><i class="fas fa-shuttle-van"></i> Navettes premium</a></li>
+                        <li><a href="#specialites"><i class="fas fa-warehouse"></i> Débarras certifié</a></li>
                         <li><a href="#specialites"><i class="fas fa-truck"></i> Transport national</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Contact</h3>
+                    <h3>Contact Pro</h3>
                     <ul class="footer-links">
-                        <li><a href="tel:+33783673783"><i class="fas fa-phone"></i> +33 7 83 67 37 83</a></li>
-                        <li><a href="mailto:luteciatransports@hotmail.fr"><i class="fas fa-envelope"></i> luteciatransports@hotmail.fr</a></li>
+                        <li><a href="tel:+33783673783"><i class="fas fa-phone"></i> 07 83 67 37 83</a></li>
+                        <li><a href="mailto:luteciatransports@hotmail.fr"><i class="fas fa-envelope"></i> Pro@luteciatransports.fr</a></li>
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Le Thillay (95500)</a></li>
-                        <li><a href="#"><i class="fas fa-user"></i> Riad Mehloul</a></li>
+                        <li><a href="#"><i class="fas fa-user-tie"></i> Riad Mehloul</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Zone d'action</h3>
+                    <h3>Certifications</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-check-circle"></i> Spécialiste Nord Parisien</li>
-                        <li><i class="fas fa-check-circle"></i> Petite & Grande Couronne</li>
-                        <li><i class="fas fa-check-circle"></i> France entière</li>
-                        <li><i class="fas fa-check-circle"></i> Débarras certifié</li>
+                        <li><i class="fas fa-check-circle"></i> Transport écologique</li>
+                        <li><i class="fas fa-check-circle"></i> Certificats destruction</li>
+                        <li><i class="fas fa-check-circle"></i> Flotte Euro 6</li>
+                        <li><i class="fas fa-check-circle"></i> Professionnels assurés</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 LUTECIA TRANSPORTS - Tous droits réservés | 
-                   <a href="https://luteciatransports-code.github.io/LUTECIA-TRANSPORTS/" target="_blank" style="color: var(--accent);">Site officiel</a> |
-                   Transport écologique avec flotte Renault & Mercedes
+                <p>&copy; 2023 LUTECIA TRANSPORTS - Transport professionnel Nord Parisien | 
+                   <a href="https://luteciatransports-code.github.io/LUTECIA-TRANSPORTS/" target="_blank" style="color: var(--accent); font-weight: 600;">Site Officiel</a> |
+                   Flotte Renault & Mercedes haut de gamme
                 </p>
             </div>
         </div>
@@ -1344,28 +1493,46 @@
             });
         });
         
-        // Formulaire de contact
+        // Formulaire de contact professionnel
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Animation de succès
+            // Animation de succès pro
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
+            const originalBg = submitBtn.style.background;
             
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Demande envoyée !';
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Demande transmise';
             submitBtn.style.background = 'linear-gradient(135deg, var(--secondary) 0%, #00c969 100%)';
+            submitBtn.disabled = true;
+            
+            // Simuler envoi
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Traitement en cours...';
+            }, 1000);
             
             setTimeout(() => {
                 submitBtn.innerHTML = originalText;
-                submitBtn.style.background = 'linear-gradient(135deg, var(--accent) 0%, #ffcc00 100%)';
+                submitBtn.style.background = originalBg;
+                submitBtn.disabled = false;
                 this.reset();
                 
-                // Notification
-                alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
-            }, 2000);
+                // Notification pro
+                const notification = document.createElement('div');
+                notification.innerHTML = `
+                    <div style="position: fixed; top: 100px; right: 20px; background: var(--secondary); color: white; padding: 20px; border-radius: 8px; z-index: 10000; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                        <i class="fas fa-check-circle"></i> Demande reçue. Nous vous contacterons sous 24h.
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }, 3000);
         });
         
-        // Smooth scrolling
+        // Smooth scrolling amélioré
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1392,29 +1559,45 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeIn 1s ease-out forwards';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.transition = 'all 0.8s ease-out';
                 }
             });
         }, observerOptions);
         
-        // Observer les cartes
-        document.querySelectorAll('.specialty-card, .service-card, .feature').forEach(card => {
-            observer.observe(card);
+        // Observer les éléments
+        document.querySelectorAll('.specialty-card, .service-card, .feature, .video-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
         });
         
-        // Header transparent sur hero
+        // Header avec effet pro
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             const hero = document.querySelector('.hero');
             
-            if (window.scrollY > hero.offsetHeight * 0.8) {
+            if (window.scrollY > hero.offsetHeight * 0.7) {
                 header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.backdropFilter = 'blur(10px)';
             } else {
                 header.style.background = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
+                header.style.backdropFilter = 'blur(5px)';
             }
         });
+        
+        // Contrôle vidéo automatique pour mobile (performance)
+        if (window.innerWidth <= 768) {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.setAttribute('playsinline', '');
+                video.setAttribute('muted', '');
+                video.setAttribute('autoplay', '');
+            });
+        }
     </script>
 </body>
 </html>
