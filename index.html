@@ -3,120 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUTECIA TRANSPORTS - Transport routier de fret</title>
+    <title>LUTECIA TRANSPORTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0056a6;
-            --secondary: #e6a400;
-            --dark: #1a3a5f;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .container {
+        /* Header */
+        header {
+            background: white;
+            padding: 15px 0;
+            position: fixed;
             width: 100%;
+            z-index: 1000;
+        }
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
         .logo h1 {
+            color: #0056a6;
             font-size: 1.8rem;
-            margin-bottom: 0;
-            color: var(--primary);
         }
+        .logo span { color: #e6a400; }
         
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
-        /* Hero Section avec VIDEO */
+        /* Hero avec VIDEO */
         .hero {
-            position: relative;
             height: 100vh;
-            min-height: 700px;
-            color: white;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            overflow: hidden;
+            color: white;
         }
-        
         .hero-video {
             position: absolute;
             top: 0;
@@ -126,811 +47,54 @@
             object-fit: cover;
             z-index: -2;
         }
-        
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.9));
+            background: rgba(26, 58, 95, 0.85);
             z-index: -1;
         }
-        
         .hero-content {
-            max-width: 900px;
-            padding: 0 20px;
-            z-index: 1;
+            padding: 20px;
         }
-        
         .hero h2 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
-        
-        .hero p {
-            font-size: 1.4rem;
-            margin: 0 auto 40px;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        
         .btn {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--dark);
-            padding: 16px 40px;
+            background: #e6a400;
+            color: #1a3a5f;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
             border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn:hover {
-            background-color: #ffb700;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* Sections générales */
-        section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* Présentation */
-        .presentation-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        
-        .presentation-text {
-            flex: 1;
-        }
-        
-        .presentation-video {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .presentation-video video {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
-        }
-        
-        /* Vidéo Section */
-        .video-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .video-section h2 {
-            color: white;
-        }
-        
-        .video-container {
-            max-width: 900px;
-            margin: 40px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Activités */
-        .activities {
-            background-color: #f8f9fa;
-        }
-        
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
-        
-        .activity-card {
-            background: white;
-            border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            text-align: center;
-        }
-        
-        .activity-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .activity-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-        
-        /* Zone d'intervention */
-        .zone-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .zone-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .zone-item {
-            background: linear-gradient(135deg, var(--primary) 0%, #0077cc 100%);
-            color: white;
-            padding: 18px 35px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 86, 166, 0.2);
-        }
-        
-        .zone-item i {
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-        
-        /* Contact */
-        .contact {
-            background-color: #f8f9fa;
-        }
-        
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 60px;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 320px;
-        }
-        
-        .contact-card {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 35px;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .contact-detail i {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-right: 20px;
-            margin-top: 5px;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 320px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 80px 0 40px;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 50px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            color: white;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            padding-bottom: 12px;
-            position: relative;
-        }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-        
-        .footer-links i {
-            margin-right: 10px;
-            width: 20px;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-        }
-        
-        /* Vidéo Controls */
-        .video-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
             margin-top: 20px;
-        }
-        
-        .video-btn {
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .video-btn:hover {
-            background: #ffb700;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .presentation-content {
-                flex-direction: column;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            section {
-                padding: 80px 0;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                flex-direction: column;
-                background-color: white;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                padding: 25px;
-                transition: left 0.3s ease;
-            }
-            
-            nav ul.active {
-                left: 0;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .hero {
-                min-height: 600px;
-                padding-top: 80px;
-            }
-            
-            .hero h2 {
-                font-size: 1.9rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 1.7rem;
-            }
-            
-            .btn {
-                padding: 14px 30px;
-            }
-            
-            .zone-item {
-                padding: 15px 25px;
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="container header-container">
+        <div class="container">
             <div class="logo">
                 <h1>LUTECIA <span>TRANSPORTS</span></h1>
             </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#presentation">Présentation</a></li>
-                    <li><a href="#activites">Nos activités</a></li>
-                    <li><a href="#zone">Zone d'intervention</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <!-- Hero Section avec VIDEO -->
-    <section id="accueil" class="hero">
+    <!-- SECTION HERO AVEC VIDÉO -->
+    <section class="hero">
         <video autoplay muted loop playsinline class="hero-video">
-            <!-- VIDÉO 1 : Choisissez une de ces options -->
             <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-on-the-highway-1633-large.mp4" type="video/mp4">
-            <!-- VIDÉO 2 (alternative) : -->
-            <!-- <source src="https://cdn.coverr.co/videos/coverr-trucks-on-the-highway-5134/1080p.mp4" type="video/mp4"> -->
-            <!-- VIDÉO 3 (alternative) : -->
-            <!-- <source src="https://assets.mixkit.co/videos/preview/mixkit-transport-truck-on-a-country-road-41656-large.mp4" type="video/mp4"> -->
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h2>Transport routier de fret de proximité</h2>
-            <p>Régional & inter-régional – Fiabilité, flexibilité et réactivité au service de vos besoins logistiques</p>
-            <a href="#contact" class="btn">
-                <i class="fas fa-phone-alt"></i> Nous contacter
-            </a>
+            <p>Régional & inter-régional – Solutions fiables et flexibles</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
         </div>
     </section>
-
-    <!-- Présentation avec vidéo optionnelle -->
-    <section id="presentation" class="presentation">
-        <div class="container">
-            <div class="section-title">
-                <h2>Présentation</h2>
-            </div>
-            
-            <div class="presentation-content">
-                <div class="presentation-text">
-                    <h3>LUTECIA TRANSPORTS</h3>
-                    <p>LUTECIA TRANSPORTS est une entreprise spécialisée dans le transport routier de fret, implantée au Thillay (95500), au cœur du Paris Nord.</p>
-                    <p>Nous accompagnons logisticiens, industriels et chargeurs avec des solutions fiables, flexibles et immédiatement opérationnelles.</p>
-                    <p>Notre expertise nous permet de répondre à vos besoins de transport régional et inter-régional avec une réactivité et un professionnalisme reconnus.</p>
-                    <a href="#activites" class="btn">Découvrir nos services</a>
-                </div>
-                
-                <!-- Section vidéo optionnelle dans Présentation -->
-                <div class="presentation-video">
-                    <video controls poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-on-the-highway-1633-large.mp4" type="video/mp4">
-                        Votre navigateur ne supporte pas la vidéo.
-                    </video>
-                    <div class="video-controls">
-                        <button class="video-btn" onclick="playVideo(this)">▶️ Lecture</button>
-                        <button class="video-btn" onclick="pauseVideo(this)">⏸️ Pause</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Vidéo dédiée (optionnelle) -->
-    <section class="video-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Notre expertise en vidéo</h2>
-                <p style="color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">Découvrez comment LUTECIA TRANSPORTS assure vos livraisons avec précision et professionnalisme</p>
-            </div>
-            
-            <div class="video-container">
-                <video id="main-video" controls poster="https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-transport-truck-on-a-country-road-41656-large.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activités -->
-    <section id="activites" class="activities">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos activités</h2>
-            </div>
-            
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <div class="activity-icon">
-                        <i class="fas fa-truck-moving"></i>
-                    </div>
-                    <h3>Transport régional & inter-régional</h3>
-                    <p>Nous assurons le transport de vos marchandises dans toute l'Île-de-France et au-delà, avec une gestion optimisée de vos flux.</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="activity-icon">
-                        <i class="fas fa-shuttle-van"></i>
-                    </div>
-                    <h3>Navettes logistiques dédiées</h3>
-                    <p>Mise en place de circuits réguliers adaptés à vos besoins spécifiques pour une logistique fluide et maîtrisée.</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="activity-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Véhicules avec conducteur</h3>
-                    <p>Location de véhicules avec conducteurs expérimentés pour répondre à vos besoins ponctuels ou réguliers.</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="activity-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-                    <h3>Extension ponctuelle</h3>
-                    <p>Adaptation de nos capacités selon vos besoins spécifiques pour faire face aux pics d'activité ou demandes exceptionnelles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Zone d'intervention -->
-    <section id="zone" class="zone">
-        <div class="container">
-            <div class="section-title">
-                <h2>Zone d'intervention</h2>
-            </div>
-            
-            <div class="zone-content">
-                <p style="max-width: 800px; text-align: center; font-size: 1.1rem;">Notre entreprise intervient principalement dans la région Paris Nord, avec une capacité à répondre à vos besoins sur l'ensemble du territoire national grâce à notre réseau de partenaires.</p>
-                
-                <div class="zone-list">
-                    <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Paris Nord</span>
-                    </div>
-                    <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Île-de-France</span>
-                    </div>
-                    <div class="zone-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Inter-régional</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact</h2>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>Contactez-nous</h3>
-                        <p>N'hésitez pas à nous contacter pour discuter de vos besoins en transport et logistique.</p>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-user"></i>
-                            <div>
-                                <h4>Riad Mehloul</h4>
-                                <p>Interlocuteur opérationnel et commercial</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Téléphone</h4>
-                                <p>+33 7 83 67 37 83</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>luteciatransports@hotmail.fr</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Adresse</h4>
-                                <p>Le Thillay (95500)<br>Paris Nord, France</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3>Site web</h3>
-                        <p>Visitez notre site web pour plus d'informations :</p>
-                        <a href="https://luteciatransports-code.github.io/LUTECIA-TRANSPORTS/" target="_blank" class="btn" style="margin-top: 15px;">
-                            <i class="fas fa-external-link-alt"></i> Accéder au site
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Formulaire de contact</h3>
-                    <p>Envoyez-nous un message, nous vous répondrons dans les plus brefs délais.</p>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nom complet *</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Sujet *</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" class="form-control" rows="6" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i> Envoyer le message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>LUTECIA TRANSPORTS</h3>
-                    <p>Transport routier de fret de proximité – régional & inter-régional.</p>
-                    <p>Fiabilité, flexibilité et réactivité au service de vos besoins logistiques.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
-                        <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="#presentation"><i class="fas fa-info-circle"></i> Présentation</a></li>
-                        <li><a href="#activites"><i class="fas fa-truck"></i> Nos activités</a></li>
-                        <li><a href="#zone"><i class="fas fa-map-marked-alt"></i> Zone d'intervention</a></li>
-                        <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Coordonnées</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Le Thillay (95500)</a></li>
-                        <li><a href="tel:+33783673783"><i class="fas fa-phone"></i> +33 7 83 67 37 83</a></li>
-                        <li><a href="mailto:luteciatransports@hotmail.fr"><i class="fas fa-envelope"></i> luteciatransports@hotmail.fr</a></li>
-                        <li><a href="#"><i class="fas fa-user"></i> Riad Mehloul</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Zone d'intervention</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-check-circle"></i> Paris Nord</li>
-                        <li><i class="fas fa-check-circle"></i> Île-de-France</li>
-                        <li><i class="fas fa-check-circle"></i> Inter-régional</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 LUTECIA TRANSPORTS - Tous droits réservés | <a href="https://luteciatransports-code.github.io/LUTECIA-TRANSPORTS/" target="_blank" style="color: var(--secondary); text-decoration: underline;">Site officiel</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Menu mobile
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-        
-        // Fermer le menu mobile quand on clique sur un lien
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('nav ul').classList.remove('active');
-            });
-        });
-        
-        // Formulaire de contact (simulation)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-            this.reset();
-        });
-        
-        // Smooth scrolling pour les liens d'ancrage
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Contrôles vidéo
-        function playVideo(btn) {
-            const video = btn.closest('.presentation-video').querySelector('video');
-            video.play();
-        }
-        
-        function pauseVideo(btn) {
-            const video = btn.closest('.presentation-video').querySelector('video');
-            video.pause();
-        }
-        
-        // Header transparent sur la section hero
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            const hero = document.querySelector('.hero');
-            const heroBottom = hero.offsetTop + hero.offsetHeight;
-            
-            if (window.scrollY > heroBottom - 100) {
-                header.style.backgroundColor = 'white';
-            } else {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
 </body>
 </html>
