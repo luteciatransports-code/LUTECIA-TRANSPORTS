@@ -112,12 +112,13 @@
         
         /* ===== HEADER & NAVIGATION ===== */
         header {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         
         .nav-container {
@@ -203,43 +204,57 @@
         
         /* ===== HERO SECTION ===== */
         .hero {
-            background: linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.9)), url('https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
+            background: 
+                linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.9)),
+                url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2100&q=80');
             background-size: cover;
-            background-position: center;
+            background-position: center 70%;
+            background-attachment: fixed;
             color: white;
             padding: 180px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             font-weight: 800;
             animation: fadeInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 30px;
             font-weight: 400;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 1s ease-out 0.3s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .hero-tagline {
             display: inline-block;
             background-color: rgba(212, 175, 55, 0.9);
             color: var(--primary-blue);
-            padding: 8px 20px;
+            padding: 10px 25px;
             border-radius: 30px;
             font-weight: 700;
             margin-bottom: 40px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             animation: fadeInUp 1s ease-out 0.5s both;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
         .hero-btns {
@@ -251,21 +266,65 @@
             animation: fadeInUp 1s ease-out 0.7s both;
         }
         
-        /* Camion animé dans le hero */
-        .hero-truck-animation {
+        /* Animation de camions sur la route */
+        .road-container {
             position: absolute;
             bottom: 0;
-            left: -200px;
-            width: 200px;
-            height: 80px;
-            animation: truckDrive 20s linear infinite;
-            opacity: 0.7;
+            left: 0;
+            width: 100%;
+            height: 150px;
             z-index: 1;
+            overflow: hidden;
         }
         
-        .hero-truck-animation i {
+        .road {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #333;
+        }
+        
+        .road-lines {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 200%;
+            height: 6px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                yellow 40px,
+                yellow 80px
+            );
+            animation: roadMove 2s linear infinite;
+        }
+        
+        .hero-truck {
+            position: absolute;
+            bottom: 60px;
+            left: -200px;
             font-size: 80px;
-            color: rgba(255, 255, 255, 0.6);
+            color: white;
+            animation: truckDrive 25s linear infinite;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .hero-truck:nth-child(2) {
+            animation-delay: 8s;
+            bottom: 70px;
+            font-size: 70px;
+            color: #e0e0e0;
+        }
+        
+        .hero-truck:nth-child(3) {
+            animation-delay: 15s;
+            bottom: 65px;
+            font-size: 60px;
+            color: #f0f0f0;
         }
         
         /* ===== ANIMATIONS ===== */
@@ -289,12 +348,21 @@
             }
         }
         
+        @keyframes roadMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-80px);
+            }
+        }
+        
         @keyframes float {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
         }
         
@@ -305,6 +373,12 @@
             50% {
                 transform: scale(1.05);
             }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
         
         /* ===== EXPERTISE SECTION ===== */
@@ -339,27 +413,28 @@
         .expertise-card:nth-child(4).animated { animation-delay: 0.4s; }
         
         .expertise-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .expertise-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(10, 36, 99, 0.1);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            color: var(--primary-blue);
-            font-size: 2rem;
+            color: white;
+            font-size: 2.2rem;
             transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(10, 36, 99, 0.2);
         }
         
         .expertise-card:hover .expertise-icon {
             animation: float 2s ease-in-out infinite;
-            background-color: var(--primary-blue);
-            color: white;
+            background: linear-gradient(135deg, var(--accent-gold), #C19C2E);
         }
         
         .expertise-card h3 {
@@ -394,39 +469,44 @@
         .service-card:nth-child(3).animated { animation-delay: 0.3s; }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .service-header {
-            padding: 25px 25px 15px;
+            padding: 30px 25px 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            color: white;
         }
         
         .service-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-blue);
-            color: white;
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            color: var(--primary-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             flex-shrink: 0;
             transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .service-card:hover .service-icon {
             animation: pulse 1s ease-in-out;
             background-color: var(--accent-gold);
+            color: white;
+            transform: rotate(15deg);
         }
         
         .service-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary-blue);
+            font-size: 1.5rem;
+            color: white;
             margin-bottom: 5px;
         }
         
@@ -434,15 +514,15 @@
             display: inline-block;
             background-color: var(--accent-gold);
             color: var(--primary-blue);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
         
         .service-body {
-            padding: 0 25px 25px;
+            padding: 25px;
         }
         
         .service-list {
@@ -450,10 +530,11 @@
         }
         
         .service-list li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #eee;
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
+            font-size: 1rem;
         }
         
         .service-list li:before {
@@ -462,47 +543,62 @@
             left: 0;
             color: var(--green-eco);
             font-weight: bold;
+            font-size: 1.2rem;
         }
         
         /* ===== FLEET SECTION ===== */
         .fleet {
-            background-color: var(--light-gray);
+            background-color: #f0f4f8;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .fleet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(240, 244, 248, 1), rgba(240, 244, 248, 0));
+            z-index: 2;
         }
         
         .fleet-slider {
             display: flex;
             gap: 30px;
             overflow-x: auto;
-            padding: 20px 0 40px;
+            padding: 20px 0 60px;
             scrollbar-width: thin;
             scrollbar-color: var(--primary-blue) #eee;
         }
         
         .fleet-slider::-webkit-scrollbar {
-            height: 8px;
+            height: 10px;
         }
         
         .fleet-slider::-webkit-scrollbar-track {
             background: #eee;
             border-radius: 10px;
+            margin: 0 20px;
         }
         
         .fleet-slider::-webkit-scrollbar-thumb {
-            background-color: var(--primary-blue);
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
             border-radius: 10px;
         }
         
         .vehicle-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            min-width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            min-width: 320px;
             flex: 0 0 auto;
             transition: var(--transition);
             opacity: 0;
             transform: translateX(50px);
+            position: relative;
         }
         
         .vehicle-card.animated {
@@ -512,27 +608,50 @@
         .vehicle-card:nth-child(1).animated { animation-delay: 0.1s; }
         .vehicle-card:nth-child(2).animated { animation-delay: 0.2s; }
         .vehicle-card:nth-child(3).animated { animation-delay: 0.3s; }
+        .vehicle-card:nth-child(4).animated { animation-delay: 0.4s; }
         
         .vehicle-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .vehicle-card:hover .vehicle-img {
+            transform: scale(1.05);
         }
         
         .vehicle-img {
-            height: 200px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 220px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-blue);
-            font-size: 5rem;
+            color: white;
+            font-size: 5.5rem;
             position: relative;
             overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        
+        .vehicle-img::before {
+            content: 'LUTECIA TRANSPORTS';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .vehicle-img i {
             transition: var(--transition);
             z-index: 2;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
         }
         
         .vehicle-card:hover .vehicle-img i {
@@ -545,63 +664,69 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(10, 36, 99, 0.85);
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.9), transparent);
             color: white;
-            padding: 12px;
+            padding: 20px;
             text-align: center;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             z-index: 3;
+            letter-spacing: 1px;
         }
         
         .vehicle-info {
-            padding: 25px;
+            padding: 30px;
+            position: relative;
         }
         
         .vehicle-info h4 {
             color: var(--primary-blue);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        /* Animation de fond pour les véhicules */
-        .vehicle-road {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: #555;
-            z-index: 1;
+        .vehicle-info h4 i {
+            color: var(--accent-gold);
         }
         
-        .vehicle-road:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -100%;
-            width: 200%;
-            height: 4px;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 20px,
-                yellow 20px,
-                yellow 40px
-            );
-            animation: roadMove 2s linear infinite;
+        .vehicle-features {
+            list-style: none;
+            margin: 20px 0;
         }
         
-        @keyframes roadMove {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(40px);
-            }
+        .vehicle-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .vehicle-features li i {
+            color: var(--green-eco);
+            font-size: 0.9rem;
+        }
+        
+        .vehicle-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent-gold), #C19C2E);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
         
         /* ===== DEBARBAS SECTION ===== */
+        .debarras {
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        }
+        
         .debarras-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -611,13 +736,14 @@
         
         .step-card {
             text-align: center;
-            padding: 30px 20px;
+            padding: 35px 25px;
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            border-top: 5px solid var(--primary-blue);
         }
         
         .step-card.animated {
@@ -630,41 +756,63 @@
         .step-card:nth-child(4).animated { animation-delay: 0.4s; }
         
         .step-card:hover {
-            transform: translateY(-10px);
-            animation: pulse 1s ease-in-out;
+            transform: translateY(-15px);
+            border-top-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .step-number {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-blue);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.5rem;
-            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            margin: 0 auto 25px;
             transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(10, 36, 99, 0.2);
         }
         
         .step-card:hover .step-number {
-            background-color: var(--accent-gold);
+            animation: shake 0.5s ease-in-out;
+            background: linear-gradient(135deg, var(--accent-gold), #C19C2E);
+            transform: scale(1.1);
+        }
+        
+        .step-card h3 {
             color: var(--primary-blue);
-            animation: float 2s ease-in-out infinite;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
         
         .certificat-box {
-            background-color: white;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
-            border-top: 5px solid var(--green-eco);
+            border-left: 8px solid var(--green-eco);
             opacity: 0;
             transform: translateY(30px);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: rgba(46, 139, 87, 0.1);
+            border-radius: 50%;
+            z-index: 0;
         }
         
         .certificat-box.animated {
@@ -672,15 +820,17 @@
         }
         
         .certificat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
         
         .certificat-icon {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--green-eco);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             transition: var(--transition);
+            position: relative;
+            z-index: 1;
         }
         
         .certificat-box:hover .certificat-icon {
@@ -688,10 +838,37 @@
             color: var(--primary-blue);
         }
         
+        .certificat-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
         /* ===== CONTACT SECTION ===== */
         .contact {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2100&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .contact .container {
+            position: relative;
+            z-index: 1;
         }
         
         .contact .section-title h2 {
@@ -701,21 +878,32 @@
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            gap: 60px;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 20px;
             opacity: 0;
             transform: translateX(-30px);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-30px) translateY(-5px);
         }
         
         .contact-item.animated {
@@ -729,72 +917,107 @@
         .contact-item:nth-child(5).animated { animation-delay: 0.5s; }
         
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             flex-shrink: 0;
             transition: var(--transition);
+            color: var(--accent-gold);
         }
         
         .contact-item:hover .contact-icon {
-            background-color: var(--accent-gold);
+            background: var(--accent-gold);
             color: var(--primary-blue);
             animation: pulse 1s ease-in-out;
+            transform: rotate(15deg);
         }
         
         .contact-details h4 {
             color: var(--accent-gold);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 25px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
         }
         
         .contact-form input:focus,
-        .contact-form textarea:focus {
+        .contact-form textarea:focus,
+        .contact-form select:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
+            background: white;
         }
         
         .contact-form textarea {
-            height: 150px;
+            height: 160px;
             resize: vertical;
+        }
+        
+        .contact-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A2463' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 18px;
+            padding-right: 50px;
         }
         
         .form-checkbox {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
             color: white;
+            font-size: 1rem;
+        }
+        
+        .form-checkbox input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--accent-gold);
         }
         
         /* ===== FOOTER ===== */
         footer {
-            background-color: var(--dark-gray);
+            background: linear-gradient(to bottom, var(--dark-gray), #1a1a1a);
             color: white;
-            padding: 50px 0 30px;
+            padding: 60px 0 30px;
             text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold), var(--green-eco));
         }
         
         .footer-logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: white;
             margin-bottom: 20px;
             display: inline-block;
@@ -811,28 +1034,66 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .footer-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .footer-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .footer-tag:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
         }
         
         .copyright {
             margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #555;
+            padding-top: 25px;
+            border-top: 1px solid #444;
             color: #aaa;
             font-size: 0.9rem;
         }
         
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .section-title h2 {
                 font-size: 2.2rem;
             }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
             
-            .hero-truck-animation {
-                display: none;
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-truck {
+                font-size: 60px;
             }
         }
         
@@ -843,11 +1104,12 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: white;
+                background-color: rgba(255, 255, 255, 0.98);
                 flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 25px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
                 text-align: center;
+                backdrop-filter: blur(10px);
             }
             
             .nav-links.active {
@@ -859,7 +1121,7 @@
             }
             
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 2.2rem;
             }
             
             .hero-subtitle {
@@ -867,7 +1129,7 @@
             }
             
             .section-title h2 {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
             
             .hero-btns {
@@ -884,6 +1146,20 @@
             .vehicle-card {
                 min-width: 280px;
             }
+            
+            .hero {
+                background-attachment: scroll;
+                padding: 150px 0 80px;
+            }
+            
+            .road-container {
+                height: 100px;
+            }
+            
+            .hero-truck {
+                font-size: 50px;
+                bottom: 50px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -892,7 +1168,7 @@
             }
             
             .hero {
-                padding: 150px 0 70px;
+                padding: 130px 0 70px;
             }
             
             .hero h1 {
@@ -908,11 +1184,22 @@
             }
             
             .vehicle-img {
-                height: 180px;
+                height: 200px;
             }
             
             .vehicle-img i {
-                font-size: 4rem;
+                font-size: 4.5rem;
+            }
+            
+            .contact-form input,
+            .contact-form textarea,
+            .contact-form select {
+                padding: 15px;
+            }
+            
+            .footer-tags {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -943,9 +1230,20 @@
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
-        <div class="hero-truck-animation">
-            <i class="fas fa-truck-moving"></i>
+        <div class="road-container">
+            <div class="road"></div>
+            <div class="road-lines"></div>
+            <div class="hero-truck">
+                <i class="fas fa-truck-moving"></i>
+            </div>
+            <div class="hero-truck">
+                <i class="fas fa-trailer"></i>
+            </div>
+            <div class="hero-truck">
+                <i class="fas fa-shuttle-van"></i>
+            </div>
         </div>
+        
         <div class="container">
             <h1>LUTECIA TRANSPORTS</h1>
             <div class="hero-tagline">Spécialiste Transport Nord Parisien & Écoresponsable</div>
@@ -1088,40 +1386,69 @@
             <div class="fleet-slider">
                 <div class="vehicle-card">
                     <div class="vehicle-img">
-                        <div class="vehicle-road"></div>
                         <i class="fas fa-truck"></i>
                         <div class="vehicle-overlay">CAMION ROUTIER</div>
                     </div>
                     <div class="vehicle-info">
-                        <h4>Camion Routier</h4>
+                        <h4><i class="fas fa-truck"></i> Camion Routier</h4>
                         <p>Capacité volumique importante pour le transport de marchandises et le débarras de grands volumes.</p>
-                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                        <ul class="vehicle-features">
+                            <li><i class="fas fa-check"></i> Grande capacité de chargement</li>
+                            <li><i class="fas fa-check"></i> Accès toutes zones</li>
+                            <li><i class="fas fa-check"></i> Équipement de manutention</li>
+                        </ul>
+                        <div class="vehicle-tag">SIGLÉ LUTECIA TRANSPORTS</div>
                     </div>
                 </div>
                 
                 <div class="vehicle-card">
                     <div class="vehicle-img">
-                        <div class="vehicle-road"></div>
                         <i class="fas fa-trailer"></i>
                         <div class="vehicle-overlay">REMORQUE TAUTLINER</div>
                     </div>
                     <div class="vehicle-info">
-                        <h4>Remorque Tautliner</h4>
-                        <p>Accès latéral et arrière pour chargement/déchargement facilité. Bâche de protection.</p>
-                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                        <h4><i class="fas fa-trailer"></i> Remorque Tautliner</h4>
+                        <p>Accès latéral et arrière pour chargement/déchargement facilité. Bâche de protection intégrée.</p>
+                        <ul class="vehicle-features">
+                            <li><i class="fas fa-check"></i> Accès latéral complet</li>
+                            <li><i class="fas fa-check"></i> Bâche de protection</li>
+                            <li><i class="fas fa-check"></i> Chargement rapide</li>
+                        </ul>
+                        <div class="vehicle-tag">SIGLÉ LUTECIA TRANSPORTS</div>
                     </div>
                 </div>
                 
                 <div class="vehicle-card">
                     <div class="vehicle-img">
-                        <div class="vehicle-road"></div>
+                        <i class="fas fa-truck-pickup"></i>
+                        <div class="vehicle-overlay">CAMION BENNE</div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h4><i class="fas fa-truck-pickup"></i> Camion Benne</h4>
+                        <p>Idéal pour le transport de matériaux et les chantiers. Benne basculante pour déchargement rapide.</p>
+                        <ul class="vehicle-features">
+                            <li><i class="fas fa-check"></i> Benne basculante</li>
+                            <li><i class="fas fa-check"></i> Robustesse garantie</li>
+                            <li><i class="fas fa-check"></i> Polyvalence</li>
+                        </ul>
+                        <div class="vehicle-tag">SIGLÉ LUTECIA TRANSPORTS</div>
+                    </div>
+                </div>
+                
+                <div class="vehicle-card">
+                    <div class="vehicle-img">
                         <i class="fas fa-shuttle-van"></i>
                         <div class="vehicle-overlay">FOURGON UTILITAIRE</div>
                     </div>
                     <div class="vehicle-info">
-                        <h4>Fourgon Utilitaire</h4>
+                        <h4><i class="fas fa-shuttle-van"></i> Fourgon Utilitaire</h4>
                         <p>Idéal pour les livraisons en centre-ville et les interventions rapides. Accès zones restreintes.</p>
-                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                        <ul class="vehicle-features">
+                            <li><i class="fas fa-check"></i> Accès centre-ville</li>
+                            <li><i class="fas fa-check"></i> Rapidité d'intervention</li>
+                            <li><i class="fas fa-check"></i> Économique</li>
+                        </ul>
+                        <div class="vehicle-tag">SIGLÉ LUTECIA TRANSPORTS</div>
                     </div>
                 </div>
             </div>
@@ -1240,6 +1567,15 @@
                         <input type="text" name="name" placeholder="Votre nom / entreprise" required>
                         <input type="email" name="email" placeholder="Votre adresse email" required>
                         <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
+                        
+                        <select name="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="derniers-km">Derniers Kilomètres</option>
+                            <option value="navettes">Navettes Premium</option>
+                            <option value="debarras">Débarras Professionnel</option>
+                            <option value="autres">Autres services</option>
+                        </select>
+                        
                         <textarea name="message" placeholder="Décrivez votre besoin (type de service, volume, localisation...)" required></textarea>
                         
                         <div class="form-checkbox">
@@ -1259,9 +1595,17 @@
         <div class="container">
             <div class="footer-logo">LUTECIA<span>TRANSPORTS</span></div>
             <p class="footer-tagline">Votre partenaire de confiance pour le transport professionnel et le débarras certifié en région parisienne.</p>
-            <p style="margin-bottom: 20px;">Expert Nord Parisien • Flotte Moderne • Certificat de Destruction • Écoresponsable</p>
+            
+            <div class="footer-tags">
+                <span class="footer-tag">Expert Nord Parisien</span>
+                <span class="footer-tag">Flotte Moderne</span>
+                <span class="footer-tag">Certificat de Destruction</span>
+                <span class="footer-tag">Écoresponsable</span>
+                <span class="footer-tag">Transport Premium</span>
+            </div>
+            
             <div class="copyright">
-                &copy; 2023 LUTECIA TRANSPORTS. Tous droits réservés.
+                &copy; 2023 LUTECIA TRANSPORTS. Tous droits réservés. | <a href="tel:+33783673783" style="color: #aaa; text-decoration: none;">+33 7 83 67 37 83</a>
             </div>
         </div>
     </footer>
@@ -1286,14 +1630,33 @@
             });
         });
         
-        // Simple form submission
+        // Form submission with animation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
-            this.reset();
+            
+            // Animation du bouton
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            // Simuler l'envoi
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                submitBtn.style.background = 'linear-gradient(to right, #2E8B57, #3CB371)';
+                
+                // Réinitialiser après 3 secondes
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                    this.reset();
+                }, 3000);
+            }, 1500);
         });
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling avec offset pour le header fixe
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1303,15 +1666,18 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
             });
         });
         
-        // Animation on scroll
+        // Animation on scroll avec Intersection Observer
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -1322,23 +1688,50 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
+                    
+                    // Animation spéciale pour les véhicules
+                    if (entry.target.classList.contains('vehicle-card')) {
+                        entry.target.style.animationDelay = '0s';
+                    }
                 }
             });
         }, observerOptions);
         
-        // Observe all cards for animation
+        // Observer tous les éléments animables
         document.querySelectorAll('.expertise-card, .service-card, .vehicle-card, .step-card, .certificat-box, .contact-item').forEach(el => {
             observer.observe(el);
         });
         
-        // Animate fleet section on load
-        setTimeout(() => {
-            document.querySelectorAll('.vehicle-card').forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('animated');
-                }, index * 200);
+        // Animation de la flotte au chargement
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.vehicle-card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animated');
+                    }, index * 200);
+                });
+            }, 800);
+        });
+        
+        // Effet parallaxe sur l'héro
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+            }
+        });
+        
+        // Animation des icônes au survol
+        document.querySelectorAll('.expertise-icon, .service-icon, .contact-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'rotate(15deg) scale(1.1)';
             });
-        }, 500);
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = '';
+            });
+        });
     </script>
 </body>
 </html>
