@@ -36,6 +36,7 @@
             line-height: 1.6;
             color: var(--dark-gray);
             background-color: #fff;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -208,12 +209,15 @@
             color: white;
             padding: 180px 0 100px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .hero h1 {
             font-size: 3.2rem;
             margin-bottom: 20px;
             font-weight: 800;
+            animation: fadeInUp 1s ease-out;
         }
         
         .hero-subtitle {
@@ -223,6 +227,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
         
         .hero-tagline {
@@ -234,6 +239,7 @@
             font-weight: 700;
             margin-bottom: 40px;
             font-size: 1.1rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
         
         .hero-btns {
@@ -242,6 +248,63 @@
             justify-content: center;
             margin-top: 30px;
             flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        /* Camion animé dans le hero */
+        .hero-truck-animation {
+            position: absolute;
+            bottom: 0;
+            left: -200px;
+            width: 200px;
+            height: 80px;
+            animation: truckDrive 20s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .hero-truck-animation i {
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes truckDrive {
+            0% {
+                transform: translateX(-200px);
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px));
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
         
         /* ===== EXPERTISE SECTION ===== */
@@ -262,7 +325,18 @@
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
+        
+        .expertise-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .expertise-card:nth-child(1).animated { animation-delay: 0.1s; }
+        .expertise-card:nth-child(2).animated { animation-delay: 0.2s; }
+        .expertise-card:nth-child(3).animated { animation-delay: 0.3s; }
+        .expertise-card:nth-child(4).animated { animation-delay: 0.4s; }
         
         .expertise-card:hover {
             transform: translateY(-10px);
@@ -279,6 +353,13 @@
             margin: 0 auto 25px;
             color: var(--primary-blue);
             font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .expertise-card:hover .expertise-icon {
+            animation: float 2s ease-in-out infinite;
+            background-color: var(--primary-blue);
+            color: white;
         }
         
         .expertise-card h3 {
@@ -300,7 +381,17 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
+        
+        .service-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .service-card:nth-child(1).animated { animation-delay: 0.1s; }
+        .service-card:nth-child(2).animated { animation-delay: 0.2s; }
+        .service-card:nth-child(3).animated { animation-delay: 0.3s; }
         
         .service-card:hover {
             transform: translateY(-10px);
@@ -325,6 +416,12 @@
             justify-content: center;
             font-size: 1.5rem;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            animation: pulse 1s ease-in-out;
+            background-color: var(--accent-gold);
         }
         
         .service-card h3 {
@@ -370,6 +467,7 @@
         /* ===== FLEET SECTION ===== */
         .fleet {
             background-color: var(--light-gray);
+            position: relative;
         }
         
         .fleet-slider {
@@ -402,17 +500,44 @@
             box-shadow: var(--shadow);
             min-width: 300px;
             flex: 0 0 auto;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .vehicle-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .vehicle-card:nth-child(1).animated { animation-delay: 0.1s; }
+        .vehicle-card:nth-child(2).animated { animation-delay: 0.2s; }
+        .vehicle-card:nth-child(3).animated { animation-delay: 0.3s; }
+        
+        .vehicle-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .vehicle-img {
             height: 200px;
-            background-color: #ddd;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--medium-gray);
-            font-size: 4rem;
+            color: var(--primary-blue);
+            font-size: 5rem;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .vehicle-img i {
+            transition: var(--transition);
+            z-index: 2;
+        }
+        
+        .vehicle-card:hover .vehicle-img i {
+            animation: float 2s ease-in-out infinite;
+            color: var(--accent-gold);
         }
         
         .vehicle-overlay {
@@ -422,19 +547,58 @@
             right: 0;
             background-color: rgba(10, 36, 99, 0.85);
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             font-weight: 700;
             font-size: 1.1rem;
+            z-index: 3;
         }
         
         .vehicle-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .vehicle-info h4 {
             color: var(--primary-blue);
             margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* Animation de fond pour les véhicules */
+        .vehicle-road {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: #555;
+            z-index: 1;
+        }
+        
+        .vehicle-road:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 200%;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                yellow 20px,
+                yellow 40px
+            );
+            animation: roadMove 2s linear infinite;
+        }
+        
+        @keyframes roadMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(40px);
+            }
         }
         
         /* ===== DEBARBAS SECTION ===== */
@@ -452,15 +616,27 @@
             border-radius: 8px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
         
+        .step-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .step-card:nth-child(1).animated { animation-delay: 0.1s; }
+        .step-card:nth-child(2).animated { animation-delay: 0.2s; }
+        .step-card:nth-child(3).animated { animation-delay: 0.3s; }
+        .step-card:nth-child(4).animated { animation-delay: 0.4s; }
+        
         .step-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            animation: pulse 1s ease-in-out;
         }
         
         .step-number {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: var(--primary-blue);
             color: white;
             border-radius: 50%;
@@ -468,8 +644,15 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+        
+        .step-card:hover .step-number {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            animation: float 2s ease-in-out infinite;
         }
         
         .certificat-box {
@@ -479,12 +662,30 @@
             box-shadow: var(--shadow);
             text-align: center;
             border-top: 5px solid var(--green-eco);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+        
+        .certificat-box.animated {
+            animation: fadeInUp 0.6s ease-out 0.5s forwards;
+        }
+        
+        .certificat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .certificat-icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--green-eco);
             margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .certificat-box:hover .certificat-icon {
+            animation: float 2s ease-in-out infinite;
+            color: var(--primary-blue);
         }
         
         /* ===== CONTACT SECTION ===== */
@@ -513,18 +714,37 @@
             display: flex;
             align-items: flex-start;
             gap: 15px;
+            opacity: 0;
+            transform: translateX(-30px);
         }
         
+        .contact-item.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .contact-item:nth-child(1).animated { animation-delay: 0.1s; }
+        .contact-item:nth-child(2).animated { animation-delay: 0.2s; }
+        .contact-item:nth-child(3).animated { animation-delay: 0.3s; }
+        .contact-item:nth-child(4).animated { animation-delay: 0.4s; }
+        .contact-item:nth-child(5).animated { animation-delay: 0.5s; }
+        
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            animation: pulse 1s ease-in-out;
         }
         
         .contact-details h4 {
@@ -540,6 +760,14 @@
             border: none;
             border-radius: 4px;
             font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
         }
         
         .contact-form textarea {
@@ -602,6 +830,10 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            
+            .hero-truck-animation {
+                display: none;
+            }
         }
         
         @media (max-width: 768px) {
@@ -648,6 +880,10 @@
                 max-width: 300px;
                 text-align: center;
             }
+            
+            .vehicle-card {
+                min-width: 280px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -669,6 +905,14 @@
             
             .certificat-box {
                 padding: 30px 20px;
+            }
+            
+            .vehicle-img {
+                height: 180px;
+            }
+            
+            .vehicle-img i {
+                font-size: 4rem;
             }
         }
     </style>
@@ -699,6 +943,9 @@
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
+        <div class="hero-truck-animation">
+            <i class="fas fa-truck-moving"></i>
+        </div>
         <div class="container">
             <h1>LUTECIA TRANSPORTS</h1>
             <div class="hero-tagline">Spécialiste Transport Nord Parisien & Écoresponsable</div>
@@ -841,6 +1088,7 @@
             <div class="fleet-slider">
                 <div class="vehicle-card">
                     <div class="vehicle-img">
+                        <div class="vehicle-road"></div>
                         <i class="fas fa-truck"></i>
                         <div class="vehicle-overlay">CAMION ROUTIER</div>
                     </div>
@@ -853,6 +1101,7 @@
                 
                 <div class="vehicle-card">
                     <div class="vehicle-img">
+                        <div class="vehicle-road"></div>
                         <i class="fas fa-trailer"></i>
                         <div class="vehicle-overlay">REMORQUE TAUTLINER</div>
                     </div>
@@ -865,6 +1114,7 @@
                 
                 <div class="vehicle-card">
                     <div class="vehicle-img">
+                        <div class="vehicle-road"></div>
                         <i class="fas fa-shuttle-van"></i>
                         <div class="vehicle-overlay">FOURGON UTILITAIRE</div>
                     </div>
@@ -1036,7 +1286,7 @@
             });
         });
         
-        // Simple form submission (for demo - would need backend for production)
+        // Simple form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
@@ -1060,6 +1310,35 @@
                 }
             });
         });
+        
+        // Animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards for animation
+        document.querySelectorAll('.expertise-card, .service-card, .vehicle-card, .step-card, .certificat-box, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Animate fleet section on load
+        setTimeout(() => {
+            document.querySelectorAll('.vehicle-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animated');
+                }, index * 200);
+            });
+        }, 500);
     </script>
 </body>
 </html>
