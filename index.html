@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUTECIA TRANSPORTS - Spécialiste Transport Nord Parisien</title>
+    <title>LUTECIA TRANSPORTS - Expert Transport & Débarras Nord Parisien</title>
+    <meta name="description" content="Transport professionnel, débarras certifié et logistique en région parisienne. Certificat de destruction fourni. Flotte moderne siglée Lutecia Transports.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* ===== RESET & VARIABLES ===== */
         :root {
-            --primary: #0056a6;
-            --primary-dark: #003d7a;
-            --secondary: #00a859;
-            --accent: #e6a400;
-            --dark: #1a3a5f;
-            --light: #f8f9fa;
-            --eco-green: #28a745;
+            --primary-blue: #0A2463;
+            --secondary-blue: #1E3A8A;
+            --accent-gold: #D4AF37;
+            --light-gray: #F8F9FA;
+            --medium-gray: #6C757D;
+            --dark-gray: #343A40;
+            --green-eco: #2E8B57;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -23,18 +27,21 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark-gray);
             background-color: #fff;
-            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            color: var(--dark);
+            line-height: 1.3;
             margin-bottom: 1rem;
         }
         
@@ -45,118 +52,142 @@
             padding: 0 20px;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .section-padding {
+            padding: 80px 0;
         }
         
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            display: inline-block;
+            position: relative;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        /* Header & Navigation */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+        }
+        
+        .btn-accent:hover {
+            background-color: #C19C2E;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            animation: slideInLeft 0.8s ease-out;
         }
         
-        .header-container {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 15px 20px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            text-decoration: none;
         }
         
         .logo-icon {
-            color: var(--primary);
-            font-size: 2.2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0;
-            color: var(--primary);
-        }
-        
-        .logo-text span {
-            color: var(--secondary);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
             font-weight: 800;
         }
         
-        .tagline {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
         }
         
-        .tagline i {
-            color: var(--eco-green);
+        .logo-text span {
+            color: var(--accent-gold);
         }
         
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
         
-        nav ul li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--dark-gray);
             font-weight: 600;
             font-size: 1rem;
-            transition: all 0.3s;
-            padding: 8px 0;
+            transition: var(--transition);
             position: relative;
         }
         
-        nav ul li a::after {
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a:after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
-            height: 3px;
-            background: var(--secondary);
+            height: 2px;
+            background: var(--accent-gold);
+            left: 0;
+            bottom: -5px;
             transition: width 0.3s ease;
         }
         
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        nav ul li a:hover::after {
+        .nav-links a:hover:after {
             width: 100%;
         }
         
@@ -164,1157 +195,809 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
-            color: var(--primary);
+            font-size: 1.5rem;
+            color: var(--primary-blue);
             cursor: pointer;
-            transition: transform 0.3s;
         }
         
-        .mobile-menu-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Hero Section avec PHOTO PRO */
+        /* ===== HERO SECTION ===== */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background: linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.9)), url('https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            z-index: -2;
-            filter: brightness(0.6);
-            animation: zoomEffect 20s infinite alternate;
-        }
-        
-        @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(26, 58, 95, 0.85) 0%, 
-                rgba(0, 86, 166, 0.75) 50%, 
-                rgba(0, 168, 89, 0.6) 100%);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            padding: 0 20px;
-            z-index: 1;
-            animation: fadeIn 1s ease-out 0.5s both;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero h2 {
-            font-size: 3.5rem;
             color: white;
-            margin-bottom: 25px;
-            line-height: 1.2;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
             font-weight: 800;
         }
         
-        .hero-highlight {
-            color: var(--accent);
-            display: block;
-            font-size: 1.1em;
-            text-shadow: 0 0 10px rgba(230, 164, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.6rem;
-            margin: 0 auto 50px;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 800px;
-            font-weight: 300;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ffcc00 100%);
-            color: var(--dark);
-            padding: 18px 45px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(230, 164, 0, 0.3);
-            animation: pulse 2s infinite;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(230, 164, 0, 0.4);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--secondary) 0%, #00c969 100%);
-            box-shadow: 0 8px 25px rgba(0, 168, 89, 0.3);
-            margin-left: 20px;
-        }
-        
-        /* Flotte de camions en bas */
-        .truck-row {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 0 20px;
-        }
-        
-        .truck-icon-large {
-            font-size: 3.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            animation: float 5s ease-in-out infinite;
-        }
-        
-        /* Écoresponsable Banner */
-        .eco-banner {
-            background: linear-gradient(135deg, #1a3a5f 0%, var(--dark) 100%);
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid var(--eco-green);
-            border-bottom: 3px solid var(--eco-green);
-        }
-        
-        .eco-banner::before {
-            content: '🚛 ♻️';
-            position: absolute;
-            font-size: 8rem;
-            opacity: 0.1;
-            right: -30px;
-            top: -30px;
-        }
-        
-        .eco-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .eco-icon {
-            font-size: 2.5rem;
-            animation: float 3s ease-in-out infinite;
-            color: var(--eco-green);
-        }
-        
-        /* Sections avec photos d'arrière-plan */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-with-bg {
-            position: relative;
-            color: white;
-        }
-        
-        .section-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -2;
-            filter: brightness(0.5);
-        }
-        
-        .section-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(26, 58, 95, 0.9) 0%, rgba(0, 86, 166, 0.85) 100%);
-            z-index: -1;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 20px;
-        }
-        
-        .section-title.white h2 {
-            color: white;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 5px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 20px auto 0;
-            line-height: 1.6;
-        }
-        
-        .section-subtitle.white {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Présentation avec photo de camion Renault */
-        .presentation {
-            background-color: #f8f9fa;
-        }
-        
-        .presentation-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            animation: fadeIn 1s ease-out;
-        }
-        
-        .presentation-text {
-            flex: 1;
-        }
-        
-        .presentation-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature i {
-            color: var(--primary);
+        .hero-subtitle {
             font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .presentation-visual {
-            flex: 1;
-            height: 500px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            background-image: url('https://images.unsplash.com/photo-1562887250-5cc1b762b6a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .presentation-visual::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 86, 166, 0.3) 0%, rgba(0, 168, 89, 0.2) 100%);
-        }
-        
-        /* Section Services avec photo Mercedes */
-        .services-section {
-            position: relative;
-            color: white;
-        }
-        
-        .services-bg {
-            background-image: url('https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-        }
-        
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-        
-        .specialty-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px 30px;
-            transition: all 0.4s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .specialty-card:hover {
-            transform: translateY(-15px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-        }
-        
-        .specialty-icon {
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 25px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .specialty-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 5px 35px;
-            transform: rotate(45deg);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        /* Zone d'intervention avec photo autoroute */
-        .zone-section {
-            position: relative;
-            color: white;
-        }
-        
-        .zone-bg {
-            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-        }
-        
-        .zone-content {
-            position: relative;
-        }
-        
-        .zone-map {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            position: relative;
-        }
-        
-        .paris-center {
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-            position: relative;
-            z-index: 2;
-            animation: pulse 3s infinite;
-            font-size: 1.1rem;
-        }
-        
-        .zone-circles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .circle {
-            position: absolute;
-            border: 2px dashed rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-        
-        .circle-1 { width: 300px; height: 300px; animation: pulse 3s infinite; }
-        .circle-2 { width: 500px; height: 500px; animation: pulse 4s infinite 0.5s; }
-        .circle-3 { width: 700px; height: 700px; animation: pulse 5s infinite 1s; }
-        
-        .zone-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 60px;
-        }
-        
-        .zone-item {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            color: white;
-            padding: 20px 35px;
-            border-radius: 50px;
+        .hero-tagline {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.9);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 30px;
             font-weight: 700;
+            margin-bottom: 40px;
             font-size: 1.1rem;
+        }
+        
+        .hero-btns {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
-        .zone-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        /* ===== EXPERTISE SECTION ===== */
+        .expertise {
+            background-color: var(--light-gray);
         }
         
-        .zone-item.highlight {
-            background: rgba(230, 164, 0, 0.8);
-            animation: pulse 2s infinite;
-        }
-        
-        /* Section Débarras avec photo entrepôt */
-        .debarras-section {
-            position: relative;
-            color: white;
-        }
-        
-        .debarras-bg {
-            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-        }
-        
-        .services-grid {
+        .expertise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
         
+        .expertise-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .expertise-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(10, 36, 99, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+        
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
         .service-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        .service-certificate {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+        .service-header {
+            padding: 25px 25px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
             color: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 50px;
-            text-align: center;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .service-body {
+            padding: 0 25px 25px;
+        }
+        
+        .service-list {
+            list-style-type: none;
+        }
+        
+        .service-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
             position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green-eco);
+            font-weight: bold;
+        }
+        
+        /* ===== FLEET SECTION ===== */
+        .fleet {
+            background-color: var(--light-gray);
+        }
+        
+        .fleet-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0 40px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-blue) #eee;
+        }
+        
+        .fleet-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .fleet-slider::-webkit-scrollbar-track {
+            background: #eee;
+            border-radius: 10px;
+        }
+        
+        .fleet-slider::-webkit-scrollbar-thumb {
+            background-color: var(--primary-blue);
+            border-radius: 10px;
+        }
+        
+        .vehicle-card {
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
-            border: 2px solid var(--eco-green);
+            box-shadow: var(--shadow);
+            min-width: 300px;
+            flex: 0 0 auto;
         }
         
-        .certificate-icon {
+        .vehicle-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-gray);
             font-size: 4rem;
-            margin-bottom: 20px;
-            animation: float 4s ease-in-out infinite;
-            color: var(--eco-green);
+            position: relative;
         }
         
-        /* Section Contact avec photo logistique */
-        .contact-section {
-            position: relative;
+        .vehicle-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 36, 99, 0.85);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .vehicle-info {
+            padding: 20px;
+        }
+        
+        .vehicle-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* ===== DEBARBAS SECTION ===== */
+        .debarras-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 20px;
+        }
+        
+        .certificat-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--green-eco);
+        }
+        
+        .certificat-icon {
+            font-size: 3.5rem;
+            color: var(--green-eco);
+            margin-bottom: 20px;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background-color: var(--primary-blue);
             color: white;
         }
         
-        .contact-bg {
-            background-image: url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80');
+        .contact .section-title h2 {
+            color: white;
         }
         
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
+            gap: 50px;
         }
         
-        .contact-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
         
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-        }
-        
-        .contact-detail {
+        .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .contact-detail i {
-            color: var(--accent);
-            font-size: 1.5rem;
-            min-width: 30px;
-            padding-top: 5px;
-        }
-        
-        .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-        
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 0 3px rgba(230, 164, 0, 0.1);
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #0d2840 100%);
-            color: white;
-            padding: 80px 0 30px;
-            position: relative;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-column h3 {
-            color: white;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            position: relative;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-        
-        .social-links {
-            display: flex;
             gap: 15px;
-            margin-top: 20px;
         }
         
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
         
-        .social-link:hover {
-            background: var(--secondary);
-            transform: translateY(-5px);
+        .contact-details h4 {
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
         }
         
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero h2 {
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero h1 {
                 font-size: 2.8rem;
             }
-            .circle-3 { width: 500px; height: 500px; }
-        }
-        
-        @media (max-width: 992px) {
-            .presentation-content {
-                flex-direction: column;
-            }
-            .hero h2 {
-                font-size: 2.4rem;
-            }
+            
             .section-title h2 {
                 font-size: 2.2rem;
-            }
-            .zone-item {
-                padding: 15px 25px;
-                font-size: 1rem;
             }
         }
         
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
             
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                flex-direction: column;
-                background: white;
-                padding: 30px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                transition: left 0.4s ease;
-                z-index: 999;
+            .hero h1 {
+                font-size: 2.3rem;
             }
             
-            nav ul.active {
-                left: 0;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .hero {
-                min-height: 600px;
-                padding-top: 80px;
-                background-attachment: scroll;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
+            .hero-subtitle {
                 font-size: 1.2rem;
             }
             
-            .btn-container {
-                display: flex;
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .hero-btns {
                 flex-direction: column;
-                gap: 15px;
+                align-items: center;
             }
             
-            .btn-secondary {
-                margin-left: 0;
-            }
-            
-            .circle-2, .circle-3 {
-                display: none;
-            }
-            
-            .truck-row {
-                display: none;
-            }
-            
-            /* Désactive le parallax sur mobile */
-            .section-bg {
-                background-attachment: scroll;
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
         }
         
         @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 1.8rem;
+            .section-padding {
+                padding: 60px 0;
             }
             
-            .section-title h2 {
-                font-size: 1.8rem;
+            .hero {
+                padding: 150px 0 70px;
             }
             
-            .feature {
-                grid-column: span 2;
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-card, .expertise-card, .step-card {
+                padding: 25px 20px;
+            }
+            
+            .certificat-box {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header & Navigation -->
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-truck-moving"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>LUTECIA <span>TRANSPORTS</span></h1>
-                    <div class="tagline">
-                        <i class="fas fa-leaf"></i>
-                        Spécialiste transport Nord Parisien & Écoresponsable
-                    </div>
-                </div>
-            </div>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">LT</div>
+                <div class="logo-text">LUTECIA<span>TRANSPORTS</span></div>
+            </a>
             
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <nav>
-                <ul>
-                    <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
-                    <li><a href="#presentation"><i class="fas fa-info-circle"></i> Présentation</a></li>
-                    <li><a href="#services"><i class="fas fa-star"></i> Services</a></li>
-                    <li><a href="#zone"><i class="fas fa-map-marked-alt"></i> Zone d'intervention</a></li>
-                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-                </ul>
-            </nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#flotte">Notre Flotte</a></li>
+                <li><a href="#debarras">Débarras Pro</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section avec PHOTO DE CAMION PRO -->
-    <section id="accueil" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content">
-            <h2>
-                <span class="hero-highlight">EXPERT</span> TRANSPORT NORD PARISIEN
-            </h2>
-            <p>Derniers kilomètres • Navettes rapides • Débarras certifiés • Transport écologique</p>
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1>LUTECIA TRANSPORTS</h1>
+            <div class="hero-tagline">Spécialiste Transport Nord Parisien & Écoresponsable</div>
+            <p class="hero-subtitle">Expert en derniers kilomètres, navettes rapides et débarras certifiés avec une approche écologique</p>
             
-            <div class="btn-container">
-                <a href="#contact" class="btn">
-                    <i class="fas fa-file-invoice-dollar"></i> Devis immédiat
-                </a>
-                <a href="tel:+33783673783" class="btn btn-secondary">
-                    <i class="fas fa-phone"></i> 07 83 67 37 83
-                </a>
+            <div class="hero-btns">
+                <a href="#contact" class="btn">Demander un devis gratuit</a>
+                <a href="#debarras" class="btn btn-accent">Voir nos services de débarras</a>
             </div>
-        </div>
-        
-        <!-- Icônes de camions en bas -->
-        <div class="truck-row">
-            <i class="fas fa-truck-moving truck-icon-large"></i>
-            <i class="fas fa-truck truck-icon-large"></i>
-            <i class="fas fa-shipping-fast truck-icon-large"></i>
-            <i class="fas fa-truck-pickup truck-icon-large"></i>
         </div>
     </section>
 
-    <!-- Bannière Écoresponsable -->
-    <div class="eco-banner">
-        <div class="container">
-            <div class="eco-content">
-                <div class="eco-icon">
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <div>
-                    <h3 style="color: white; margin-bottom: 5px; font-size: 1.8rem;">TRANSPORT HAUT DE GAMME ÉCORESPONSABLE</h3>
-                    <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-                        Flotte moderne • Optimisation carburant • Certificats de destruction écologique • Logistique durable
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Présentation -->
-    <section id="presentation" class="presentation">
+    <!-- Expertise Section -->
+    <section class="expertise section-padding" id="expertise">
         <div class="container">
             <div class="section-title">
                 <h2>Expertise Transport Professionnelle</h2>
-                <div class="section-subtitle">
-                    Basés stratégiquement au Thillay (95), nous maîtrisons la logistique complexe du Nord Parisien avec une flotte moderne et des process optimisés.
-                </div>
+                <p>Basés stratégiquement au Thillay (95), nous maîtrisons la logistique complexe du Nord Parisien</p>
             </div>
             
-            <div class="presentation-content">
-                <div class="presentation-text">
-                    <h3>Votre partenaire logistique premium</h3>
-                    <p>LUTECIA TRANSPORTS combine expertise terrain et équipements haut de gamme pour des solutions de transport sur-mesure.</p>
-                    
-                    <div class="presentation-features">
-                        <div class="feature">
-                            <i class="fas fa-award"></i>
-                            <div>
-                                <strong>Expert Nord Parisien</strong>
-                                <p>Maîtrise des contraintes urbaines</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <div>
-                                <strong>Flotte Haute Performance</strong>
-                                <p>Véhicules modernes et performants</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <div>
-                                <strong>Navettes Express</strong>
-                                <p>Petite & grande couronne</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-clipboard-check"></i>
-                            <div>
-                                <strong>Certification Complète</strong>
-                                <p>Traçabilité & écologie</p>
-                            </div>
-                        </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    
-                    <p>Notre approche professionnelle garantit fiabilité, réactivité et respect des délais, même pour les missions les plus complexes.</p>
+                    <h3>Expert Nord Parisien</h3>
+                    <p>Maîtrise parfaite des contraintes urbaines et réglementaires de la région parisienne.</p>
                 </div>
                 
-                <div class="presentation-visual">
-                    <!-- Photo de camion Renault en arrière-plan -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services avec photo Mercedes -->
-    <section id="services" class="services-section section-with-bg">
-        <div class="section-bg services-bg"></div>
-        <div class="section-overlay"></div>
-        <div class="container">
-            <div class="section-title white">
-                <h2>Services Haut de Gamme</h2>
-                <div class="section-subtitle white">
-                    Des solutions premium adaptées aux exigences du transport moderne
-                </div>
-            </div>
-            
-            <div class="specialties-grid">
-                <div class="specialty-card">
-                    <div class="specialty-badge">Expert</div>
-                    <div class="specialty-icon">
-                        <i class="fas fa-road"></i>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-truck-moving"></i>
                     </div>
-                    <h3>Derniers Kilomètres Pro</h3>
-                    <p>Livraison ultra-précise en milieu urbain complexe avec équipements adaptés pour les zones restreintes.</p>
-                    <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Centres-villes historiques</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Zones piétonnes</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Quartiers sensibles</li>
-                    </ul>
+                    <h3>Flotte Haute Performance</h3>
+                    <p>Véhicules modernes, performants et régulièrement entretenus pour une fiabilité optimale.</p>
                 </div>
                 
-                <div class="specialty-card">
-                    <div class="specialty-badge">Rapide</div>
-                    <div class="specialty-icon">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
                         <i class="fas fa-shuttle-van"></i>
                     </div>
-                    <h3>Navettes Premium</h3>
-                    <p>Circuits optimisés avec tracking GPS. Véhicules modernes pour fiabilité maximale.</p>
-                    <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Paris & proche banlieue</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Grande couronne</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> France entière</li>
-                    </ul>
+                    <h3>Navettes Express</h3>
+                    <p>Services rapides et efficaces pour la petite et grande couronne parisienne.</p>
                 </div>
                 
-                <div class="specialty-card">
-                    <div class="specialty-badge">Certifié</div>
-                    <div class="specialty-icon">
-                        <i class="fas fa-warehouse"></i>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-certificate"></i>
                     </div>
-                    <h3>Débarras Pro</h3>
-                    <p>Vidange complète avec certification. Traçabilité totale et recyclage écologique professionnel.</p>
-                    <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Entrepôts industriels</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Archives d'entreprise</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Bureaux & locaux</li>
-                    </ul>
+                    <h3>Certification Complète</h3>
+                    <p>Traçabilité totale et engagement écologique avec certificats officiels.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Zone d'intervention avec photo autoroute -->
-    <section id="zone" class="zone-section section-with-bg">
-        <div class="section-bg zone-bg"></div>
-        <div class="section-overlay"></div>
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
         <div class="container">
-            <div class="section-title white">
-                <h2>Rayon d'Action Professionnel</h2>
-                <div class="section-subtitle white">
-                    Expertise Nord Parisienne couplée à une capacité nationale
-                </div>
-            </div>
-            
-            <div class="zone-content">
-                <div class="zone-map">
-                    <div class="zone-circles">
-                        <div class="circle circle-1"></div>
-                        <div class="circle circle-2"></div>
-                        <div class="circle circle-3"></div>
-                    </div>
-                    <div class="paris-center">
-                        PARIS<br>NORD
-                    </div>
-                </div>
-                
-                <div class="zone-list">
-                    <div class="zone-item highlight">
-                        <i class="fas fa-crown"></i>
-                        <span>SPÉCIALISTE NORD PARISIEN</span>
-                    </div>
-                    <div class="zone-item">
-                        <i class="fas fa-bolt"></i>
-                        <span>Petite Couronne (Express)</span>
-                    </div>
-                    <div class="zone-item">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                        <span>Grande Couronne</span>
-                    </div>
-                    <div class="zone-item">
-                        <i class="fas fa-map"></i>
-                        <span>France Entière</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Débarras avec photo entrepôt -->
-    <section class="debarras-section section-with-bg">
-        <div class="section-bg debarras-bg"></div>
-        <div class="section-overlay"></div>
-        <div class="container">
-            <div class="section-title white">
-                <h2>Débarras Professionnel Certifié</h2>
+            <div class="section-title">
+                <h2>Services Haut de Gamme</h2>
+                <p>Des solutions premium adaptées aux exigences du transport moderne</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <h4><i class="fas fa-truck-loading"></i> Vidange Complète</h4>
-                    <p>Évacuation totale d'entrepôts, bureaux, archives avec équipements adaptés.</p>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div>
+                            <h3>Derniers Kilomètres Pro</h3>
+                            <span class="service-tag">Expert</span>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p>Livraison ultra-précise en milieu urbain complexe avec équipements adaptés pour les zones restreintes.</p>
+                        <ul class="service-list">
+                            <li>Centres-villes historiques</li>
+                            <li>Zones piétonnes</li>
+                            <li>Quartiers sensibles</li>
+                            <li>Livraisons express</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="service-card">
-                    <h4><i class="fas fa-recycle"></i> Tri Écologique</h4>
-                    <p>Tri sélectif et recyclage conforme aux normes environnementales.</p>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <div>
+                            <h3>Navettes Premium</h3>
+                            <span class="service-tag">Rapide</span>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p>Circuits optimisés avec tracking GPS. Véhicules modernes pour une fiabilité maximale.</p>
+                        <ul class="service-list">
+                            <li>Paris & proche banlieue</li>
+                            <li>Grande couronne</li>
+                            <li>France entière</li>
+                            <li>Tracking en temps réel</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="service-card">
-                    <h4><i class="fas fa-file-contract"></i> Certificat Officiel</h4>
-                    <p>Attestation de destruction pour traçabilité réglementaire.</p>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-trash-restore"></i>
+                        </div>
+                        <div>
+                            <h3>Débarras Professionnel</h3>
+                            <span class="service-tag">Certifié</span>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p>Vidange complète avec certification. Traçabilité totale et recyclage écologique professionnel.</p>
+                        <ul class="service-list">
+                            <li>Entrepôts industriels</li>
+                            <li>Archives d'entreprise</li>
+                            <li>Bureaux & locaux</li>
+                            <li>Certificat de destruction</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="service-card">
-                    <h4><i class="fas fa-clipboard-check"></i> Logistique Sur-Mesure</h4>
-                    <p>Planification et exécution adaptée à vos contraintes.</p>
-                </div>
-            </div>
-            
-            <div class="service-certificate">
-                <div class="certificate-icon">
-                    <i class="fas fa-file-certificate"></i>
-                </div>
-                <h3 style="color: white;">CERTIFICATION PROFESSIONNELLE</h3>
-                <p style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 20px auto; font-size: 1.1rem;">
-                    Pour tous nos services de débarras, nous garantissons : traçabilité complète, certificats de destruction officiels, conformité réglementaire et respect des normes environnementales les plus strictes.
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Contact avec photo logistique -->
-    <section id="contact" class="contact-section section-with-bg">
-        <div class="section-bg contact-bg"></div>
-        <div class="section-overlay"></div>
+    <!-- Fleet Section -->
+    <section class="fleet section-padding" id="flotte">
         <div class="container">
-            <div class="section-title white">
-                <h2>Contact Professionnel</h2>
-                <div class="section-subtitle white">
-                    Demandez une consultation sur-mesure pour vos besoins logistiques
+            <div class="section-title">
+                <h2>Notre Flotte Professionnelle</h2>
+                <p>Véhicules modernes siglés <strong>LUTECIA TRANSPORTS</strong> pour une prestation premium</p>
+            </div>
+            
+            <div class="fleet-slider">
+                <div class="vehicle-card">
+                    <div class="vehicle-img">
+                        <i class="fas fa-truck"></i>
+                        <div class="vehicle-overlay">CAMION ROUTIER</div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h4>Camion Routier</h4>
+                        <p>Capacité volumique importante pour le transport de marchandises et le débarras de grands volumes.</p>
+                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                    </div>
+                </div>
+                
+                <div class="vehicle-card">
+                    <div class="vehicle-img">
+                        <i class="fas fa-trailer"></i>
+                        <div class="vehicle-overlay">REMORQUE TAUTLINER</div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h4>Remorque Tautliner</h4>
+                        <p>Accès latéral et arrière pour chargement/déchargement facilité. Bâche de protection.</p>
+                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                    </div>
+                </div>
+                
+                <div class="vehicle-card">
+                    <div class="vehicle-img">
+                        <i class="fas fa-shuttle-van"></i>
+                        <div class="vehicle-overlay">FOURGON UTILITAIRE</div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h4>Fourgon Utilitaire</h4>
+                        <p>Idéal pour les livraisons en centre-ville et les interventions rapides. Accès zones restreintes.</p>
+                        <p><strong>Siglé LUTECIA TRANSPORTS</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Débarras Section -->
+    <section class="debarras section-padding" id="debarras">
+        <div class="container">
+            <div class="section-title">
+                <h2>Débarras Professionnel Certifié</h2>
+                <p>On vide vos locaux, entrepôts et bureaux - avec certificat de destruction à l'appui</p>
+            </div>
+            
+            <div class="debarras-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Évaluation</h3>
+                    <p>Évaluation gratuite de vos besoins et planification sur mesure.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Vidange Complète</h3>
+                    <p>Évacuation totale d'entrepôts, bureaux, archives avec équipements adaptés.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Tri Écologique</h3>
+                    <p>Tri sélectif et recyclage conforme aux normes environnementales en vigueur.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Certification</h3>
+                    <p>Délivrance du certificat de destruction pour traçabilité réglementaire.</p>
                 </div>
             </div>
             
+            <div class="certificat-box">
+                <div class="certificat-icon">
+                    <i class="fas fa-file-certificate"></i>
+                </div>
+                <h3>Certificat de Destruction Garanti</h3>
+                <p>Pour tous nos services de débarras, nous garantissons : <strong>traçabilité complète</strong>, <strong>certificats de destruction officiels</strong>, <strong>conformité réglementaire</strong> et <strong>respect des normes environnementales</strong> les plus strictes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Professionnel</h2>
+                <p>Demandez une consultation sur-mesure pour vos besoins logistiques</p>
+            </div>
+            
             <div class="contact-container">
-                <div class="contact-card">
-                    <h3>Coordonnées Directes</h3>
-                    
-                    <div class="contact-detail">
-                        <i class="fas fa-user-tie"></i>
-                        <div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Riad Mehloul</h4>
                             <p>Directeur Opérationnel & Commercial</p>
                         </div>
                     </div>
                     
-                    <div class="contact-detail">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Téléphone Direct</h4>
-                            <a href="tel:+33783673783" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 1.1rem;">+33 7 83 67 37 83</a>
+                            <p><a href="tel:+33783673783" style="color: white; text-decoration: none;">+33 7 83 67 37 83</a></p>
                         </div>
                     </div>
                     
-                    <div class="contact-detail">
-                        <i class="fas fa-envelope"></i>
-                        <div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Email Professionnel</h4>
-                            <a href="mailto:luteciatransports@hotmail.fr" style="color: var(--accent); text-decoration: none; font-weight: 500;">luteciatransports@hotmail.fr</a>
+                            <p><a href="mailto:luteciatransports@hotmail.fr" style="color: white; text-decoration: none;">luteciatransports@hotmail.fr</a></p>
                         </div>
                     </div>
                     
-                    <div class="contact-detail">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Base Opérationnelle</h4>
-                            <p style="font-weight: 500;">Le Thillay (95500)<br>Paris Nord, France</p>
+                            <p>Le Thillay (95500)<br>Paris Nord, France</p>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <h4>Horaires Professionnels</h4>
-                        <p>Lundi - Vendredi: 7h00 - 19h00<br>Samedi: 8h00 - 14h00<br>Urgences: 7j/7</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horaires Professionnels</h4>
+                            <p>Lundi - Vendredi: 7h00 - 19h00<br>
+                            Samedi: 8h00 - 14h00<br>
+                            Urgences: 7j/7</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Devis Personnalisé</h3>
-                    
                     <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Société *" required>
+                        <input type="text" name="name" placeholder="Votre nom / entreprise" required>
+                        <input type="email" name="email" placeholder="Votre adresse email" required>
+                        <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
+                        <textarea name="message" placeholder="Décrivez votre besoin (type de service, volume, localisation...)" required></textarea>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="certificat" name="certificat">
+                            <label for="certificat">Je souhaite recevoir un certificat de destruction (pour service de débarras)</label>
                         </div>
                         
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nom & Prénom *" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email professionnel *" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Téléphone *" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <select class="form-control" required>
-                                <option value="">Service demandé *</option>
-                                <option>Derniers kilomètres Nord Parisien</option>
-                                <option>Navettes petite/grande couronne</option>
-                                <option>Débarras professionnel avec certificat</option>
-                                <option>Transport national</option>
-                                <option>Consultation logistique</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" rows="6" placeholder="Détails de votre projet *" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Soumettre la demande
-                        </button>
+                        <button type="submit" class="btn btn-accent">Envoyer ma demande</button>
                     </form>
                 </div>
             </div>
@@ -1324,106 +1007,43 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>LUTECIA TRANSPORTS</h3>
-                    <p>Expert transport Nord Parisien. Flotte moderne et performante. Solutions logistiques professionnelles.</p>
-                    <div class="tagline" style="color: rgba(255,255,255,0.9); margin-top: 15px;">
-                        <i class="fas fa-award"></i>
-                        Professionnalisme & Fiabilité
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Expertises</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services"><i class="fas fa-road"></i> Derniers kilomètres</a></li>
-                        <li><a href="#services"><i class="fas fa-shuttle-van"></i> Navettes premium</a></li>
-                        <li><a href="#services"><i class="fas fa-warehouse"></i> Débarras certifié</a></li>
-                        <li><a href="#services"><i class="fas fa-truck"></i> Transport national</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Pro</h3>
-                    <ul class="footer-links">
-                        <li><a href="tel:+33783673783"><i class="fas fa-phone"></i> 07 83 67 37 83</a></li>
-                        <li><a href="mailto:luteciatransports@hotmail.fr"><i class="fas fa-envelope"></i> Contact professionnel</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Le Thillay (95500)</a></li>
-                        <li><a href="#"><i class="fas fa-user-tie"></i> Riad Mehloul</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Certifications</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-check-circle"></i> Transport écologique</li>
-                        <li><i class="fas fa-check-circle"></i> Certificats destruction</li>
-                        <li><i class="fas fa-check-circle"></i> Flotte moderne</li>
-                        <li><i class="fas fa-check-circle"></i> Professionnels assurés</li>
-                    </ul>
-                </div>
-            </div>
-            
+            <div class="footer-logo">LUTECIA<span>TRANSPORTS</span></div>
+            <p class="footer-tagline">Votre partenaire de confiance pour le transport professionnel et le débarras certifié en région parisienne.</p>
+            <p style="margin-bottom: 20px;">Expert Nord Parisien • Flotte Moderne • Certificat de Destruction • Écoresponsable</p>
             <div class="copyright">
-                <p>&copy; 2023 LUTECIA TRANSPORTS - Transport professionnel Nord Parisien | 
-                   <a href="https://luteciatransports-code.github.io/LUTECIA-TRANSPORTS/" target="_blank" style="color: var(--accent); font-weight: 600;">Site Officiel</a> |
-                   Solutions logistiques sur-mesure
-                </p>
+                &copy; 2023 LUTECIA TRANSPORTS. Tous droits réservés.
             </div>
         </div>
     </footer>
 
     <script>
-        // Menu mobile
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-            this.innerHTML = document.querySelector('nav ul').classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
         
-        // Fermer le menu mobile quand on clique sur un lien
-        document.querySelectorAll('nav ul li a').forEach(link => {
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                document.querySelector('nav ul').classList.remove('active');
-                document.querySelector('.mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
         
-        // Formulaire de contact
+        // Simple form submission (for demo - would need backend for production)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Animation de succès
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Demande transmise';
-            submitBtn.style.background = 'linear-gradient(135deg, var(--secondary) 0%, #00c969 100%)';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = 'linear-gradient(135deg, var(--accent) 0%, #ffcc00 100%)';
-                submitBtn.disabled = false;
-                this.reset();
-                
-                // Notification
-                const notification = document.createElement('div');
-                notification.innerHTML = `
-                    <div style="position: fixed; top: 100px; right: 20px; background: var(--secondary); color: white; padding: 20px; border-radius: 8px; z-index: 10000; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-                        <i class="fas fa-check-circle"></i> Demande reçue. Nous vous contacterons sous 24h.
-                    </div>
-                `;
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 5000);
-            }, 3000);
+            alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
+            this.reset();
         });
         
-        // Smooth scrolling
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1439,45 +1059,6 @@
                     });
                 }
             });
-        });
-        
-        // Animation au scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.style.transition = 'all 0.8s ease-out';
-                }
-            });
-        }, observerOptions);
-        
-        // Observer les éléments
-        document.querySelectorAll('.specialty-card, .service-card, .feature').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            observer.observe(el);
-        });
-        
-        // Header avec effet
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            const hero = document.querySelector('.hero');
-            
-            if (window.scrollY > hero.offsetHeight * 0.7) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
-                header.style.backdropFilter = 'blur(5px)';
-            }
         });
     </script>
 </body>
