@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUTECIA TRANSPORTS | Transport Logistique & Solutions Mobilité</title>
-    <meta name="description" content="Expert en transport logistique Nord Parisien, débarras certifié et navettes intersites. Solutions premium pour entreprises.">
+    <title>LUTECIA TRANSPORTS | Transport Logistique Nord Parisien</title>
+    <meta name="description" content="Transport professionnel, navettes intersites et débarras certifié. Expert Nord Parisien avec flotte moderne LUTECIA TRANSPORTS.">
     
     <!-- Préchargement optimisé -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     
-    <!-- Polices modernes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ===== VARIABLES DESIGN SYSTEM ===== */
+        /* ===== VARIABLES SIMPLIFIÉES ===== */
         :root {
-            --primary-dark: #0F172A;
-            --primary-blue: #1E40AF;
-            --accent-gold: #D97706;
-            --accent-teal: #0D9488;
-            --light-bg: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --text-dark: #1E293B;
-            --text-light: #64748B;
-            --border-color: #E2E8F0;
+            --primary: #0A2463;
+            --primary-dark: #071B4D;
+            --secondary: #1E40AF;
+            --accent: #D97706;
+            --accent-light: #F59E0B;
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --white: #FFFFFF;
             
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
+            --radius: 8px;
+            --radius-lg: 12px;
             
-            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease;
         }
         
-        /* ===== RESET & BASE ===== */
+        /* ===== RESET ET BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -51,15 +45,13 @@
         
         html {
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--light-bg);
+            color: var(--dark);
+            background: var(--white);
             overflow-x: hidden;
         }
         
@@ -69,264 +61,175 @@
             line-height: 1.2;
         }
         
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
         /* ===== CONTAINERS ===== */
         .container {
             width: 100%;
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 clamp(1rem, 5vw, 2rem);
+            padding: 0 20px;
         }
         
-        .section-padding {
-            padding: clamp(4rem, 8vh, 6rem) 0;
+        .section {
+            padding: 80px 0;
         }
         
-        /* ===== HEADER PROFESSIONNEL ===== */
+        /* ===== HEADER SIMPLE ===== */
         header {
+            background: var(--white);
+            box-shadow: var(--shadow);
             position: fixed;
-            top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            top: 0;
             z-index: 1000;
-            transition: var(--transition-base);
         }
         
-        header.scrolled {
-            box-shadow: var(--shadow-md);
-            background: rgba(255, 255, 255, 0.98);
-        }
-        
-        .nav-container {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
+            padding: 15px 20px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 10px;
             text-decoration: none;
         }
         
         .logo-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            color: white;
-            border-radius: var(--radius-sm);
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
             font-weight: 800;
+            font-size: 18px;
         }
         
         .logo-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
+            font-size: 20px;
+            color: var(--primary);
         }
         
         .logo-text span {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
         }
         
-        /* Navigation moderne */
+        /* Navigation simple */
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
-            align-items: center;
+            gap: 30px;
         }
         
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--dark);
             font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition-fast);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
-            transition: var(--transition-base);
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+            font-size: 15px;
+            transition: var(--transition);
         }
         
         .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-        
-        .nav-cta {
-            margin-left: 1rem;
+            color: var(--primary);
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.25rem;
-            color: var(--primary-dark);
+            font-size: 24px;
+            color: var(--primary);
             cursor: pointer;
-            padding: 0.5rem;
         }
         
-        /* ===== HERO MODERNE ===== */
+        /* ===== HERO SIMPLE ET EFFICACE ===== */
         .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: 
-                linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.7) 100%),
-                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.95)),
+                        url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            color: white;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        .hero-tagline {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out 0.2s forwards;
-        }
-        
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out 0.4s forwards;
-        }
-        
-        .stat-item {
+            color: var(--white);
+            padding: 140px 0 80px;
             text-align: center;
         }
         
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            font-family: 'Montserrat', sans-serif;
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero-btns {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
         }
         
         /* ===== BOUTONS ===== */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--primary);
             text-decoration: none;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius);
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: var(--transition-base);
-            position: relative;
-            overflow: hidden;
+            transition: var(--transition);
+            font-size: 16px;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            color: white;
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
         }
         
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            border: 2px solid var(--white);
         }
         
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: white;
-            transform: translateY(-2px);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
         }
         
         /* ===== SECTIONS ===== */
         .section-title {
             text-align: center;
-            margin-bottom: clamp(3rem, 6vh, 4rem);
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
         
         .section-title p {
-            font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--gray);
+            font-size: 18px;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -334,97 +237,109 @@
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .service-card {
-            background: var(--card-bg);
+            background: var(--white);
             border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition-base);
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .service-icon {
-            width: 4rem;
-            height: 4rem;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            border-radius: var(--radius-md);
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 24px;
         }
         
         .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
         
         .service-features {
             list-style: none;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
         
         .service-features li {
-            padding: 0.5rem 0;
-            color: var(--text-light);
+            padding: 8px 0;
+            color: var(--gray);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
         
         .service-features li i {
-            color: var(--accent-teal);
-            font-size: 0.9rem;
+            color: var(--accent);
+        }
+        
+        /* Navettes Section */
+        .shuttle-section {
+            background: var(--light);
+        }
+        
+        .shuttle-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .shuttle-content h3 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .shuttle-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-item i {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
         
         /* Fleet Section */
-        .fleet {
-            background: var(--light-bg);
-        }
-        
         .fleet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .vehicle-card {
-            background: var(--card-bg);
+            background: var(--white);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         .vehicle-card:hover {
@@ -434,168 +349,101 @@
         
         .vehicle-image {
             height: 200px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .vehicle-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent-gold);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .vehicle-content {
-            padding: 1.5rem;
-        }
-        
-        .vehicle-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
-        }
-        
-        /* Navettes Intersites Section */
-        .shuttle-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .shuttle-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .shuttle-content h3 {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .shuttle-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .shuttle-features li {
-            padding: 0.75rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.05rem;
-        }
-        
-        .shuttle-features li i {
-            color: var(--accent-teal);
-            font-size: 1.2rem;
-        }
-        
-        .shuttle-visual {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            border-radius: var(--radius-xl);
-            overflow: hidden;
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
+            font-size: 60px;
+        }
+        
+        .vehicle-content {
+            padding: 25px;
+        }
+        
+        .vehicle-content h4 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
         
         /* Débarras Section */
-        .debarras-process {
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         
-        .process-card {
+        .process-step {
             text-align: center;
-            padding: 2rem;
-            background: var(--card-bg);
+            padding: 25px;
+            background: var(--white);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
-            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
         }
         
-        .process-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .process-number {
-            width: 3rem;
-            height: 3rem;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            color: white;
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            margin: 0 auto 1.5rem;
-            font-size: 1.2rem;
+            margin: 0 auto 20px;
+            font-size: 20px;
         }
         
-        .certificate-card {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        .certificate-box {
+            background: var(--light);
             border-radius: var(--radius-lg);
-            padding: 3rem;
+            padding: 40px;
             text-align: center;
-            margin-top: 3rem;
-            border: 1px solid #bbf7d0;
+            margin-top: 40px;
+            border-left: 5px solid var(--accent);
         }
         
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, var(--primary-dark), #1e293b);
-            color: white;
+            background: var(--primary);
+            color: var(--white);
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
         }
         
         .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: white;
+            font-size: 28px;
+            margin-bottom: 30px;
         }
         
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 25px;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 15px;
         }
         
         .contact-icon {
-            width: 3rem;
-            height: 3rem;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            color: var(--accent-gold);
+            font-size: 20px;
             flex-shrink: 0;
         }
         
@@ -603,193 +451,160 @@
         .contact-form textarea,
         .contact-form select {
             width: 100%;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
+            padding: 15px;
+            margin-bottom: 20px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-md);
-            color: white;
+            border-radius: var(--radius);
+            color: var(--white);
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition-fast);
+            font-size: 16px;
         }
         
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
             outline: none;
-            border-color: var(--accent-teal);
-            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
         }
         
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .animated {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .animated.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
         }
         
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .shuttle-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
             }
             
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .hero-subtitle {
+                font-size: 18px;
             }
         }
         
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 0;
-                right: -100%;
-                width: min(300px, 85%);
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
                 flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+                padding: 20px;
+                box-shadow: var(--shadow);
+                display: none;
             }
             
             .nav-links.active {
-                right: 0;
+                display: flex;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .nav-cta {
-                margin: 2rem 0 0;
-                width: 100%;
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
             }
             
             .hero-btns {
                 flex-direction: column;
+                align-items: center;
             }
             
-            .hero-btns .btn {
-                width: 100%;
-                justify-content: center;
+            .section-title h2 {
+                font-size: 28px;
             }
             
-            .hero {
-                background-attachment: scroll;
+            .section {
+                padding: 60px 0;
             }
         }
         
-        @media (max-width: 640px) {
-            .section-padding {
-                padding: 3rem 0;
-            }
-            
+        @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 28px;
             }
             
-            .hero-stats {
-                grid-template-columns: 1fr 1fr;
+            .hero-subtitle {
+                font-size: 16px;
             }
             
-            .services-grid,
-            .fleet-grid,
-            .debarras-process {
-                grid-template-columns: 1fr;
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .service-card,
+            .feature-item,
+            .process-step {
+                padding: 20px;
+            }
+            
+            .certificate-box {
+                padding: 25px;
             }
         }
         
         /* ===== FOOTER ===== */
         footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 4rem 0 2rem;
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         
         .footer-logo span {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header -->
     <header>
-        <div class="container nav-container">
+        <div class="container header-container">
             <a href="#accueil" class="logo">
                 <div class="logo-icon">LT</div>
                 <div class="logo-text">LUTECIA<span>TRANSPORTS</span></div>
             </a>
             
-            <button class="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <ul class="nav-links">
-                <li><a href="#accueil" class="active">Accueil</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#flotte">Flotte</a></li>
                 <li><a href="#navettes">Navettes</a></li>
+                <li><a href="#flotte">Flotte</a></li>
                 <li><a href="#debarras">Débarras</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="nav-cta">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-phone-alt"></i> Devis Gratuit
-                    </a>
-                </li>
             </ul>
         </div>
     </header>
@@ -797,60 +612,35 @@
     <!-- Hero Section -->
     <section class="hero" id="accueil">
         <div class="container">
-            <div class="hero-content">
-                <h1>Solutions Logistiques<br>Professionnelles</h1>
-                <p class="hero-tagline">LUTECIA TRANSPORTS - Expert en transport, navettes intersites et débarras certifié pour les entreprises du Nord Parisien.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Années d'expérience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Clients satisfaits</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Disponibilité</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Certifié</div>
-                    </div>
-                </div>
-                
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-calendar-check"></i> Demander un devis
-                    </a>
-                    <a href="#services" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i> Nos services
-                    </a>
-                </div>
+            <h1>LUTECIA TRANSPORTS</h1>
+            <p class="hero-subtitle">Expert en transport logistique, navettes intersites et débarras certifié pour les entreprises du Nord Parisien.</p>
+            
+            <div class="hero-btns">
+                <a href="#contact" class="btn">Demander un devis</a>
+                <a href="#services" class="btn btn-secondary">Nos services</a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section-padding" id="services">
+    <section class="section" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Services Premium</h2>
-                <p>Des solutions logistiques complètes adaptées aux besoins spécifiques de votre entreprise</p>
+                <h2>Nos Services</h2>
+                <p>Des solutions complètes pour répondre à tous vos besoins de transport et logistique</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-truck-loading"></i>
+                        <i class="fas fa-truck-moving"></i>
                     </div>
                     <h3>Transport Logistique</h3>
-                    <p>Solutions de transport sur mesure pour vos marchandises avec gestion complète de la supply chain.</p>
+                    <p>Transport de marchandises sur toute la France avec suivi et livraison précise.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Derniers kilomètres</li>
                         <li><i class="fas fa-check"></i> Transport express</li>
-                        <li><i class="fas fa-check"></i> Gestion stock</li>
+                        <li><i class="fas fa-check"></i> Suivi en temps réel</li>
                     </ul>
                 </div>
                 
@@ -859,22 +649,22 @@
                         <i class="fas fa-shuttle-van"></i>
                     </div>
                     <h3>Navettes Intersites</h3>
-                    <p>Service de transport régulier pour vos collaborateurs entre différents sites d'entreprise.</p>
+                    <p>Transport régulier de vos collaborateurs entre différents sites d'entreprise.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Circuits sur mesure</li>
-                        <li><i class="fas fa-check"></i> Confort optimal</li>
+                        <li><i class="fas fa-check"></i> Confort assuré</li>
                         <li><i class="fas fa-check"></i> Horaires flexibles</li>
                     </ul>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-recycle"></i>
+                        <i class="fas fa-trash-restore"></i>
                     </div>
                     <h3>Débarras Professionnel</h3>
-                    <p>Évacuation complète de vos locaux avec certificat de destruction et recyclage écologique.</p>
+                    <p>Évacuation complète de locaux avec certificat de destruction officiel.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Certificat officiel</li>
+                        <li><i class="fas fa-check"></i> Certificat fourni</li>
                         <li><i class="fas fa-check"></i> Recyclage écologique</li>
                         <li><i class="fas fa-check"></i> Intervention rapide</li>
                     </ul>
@@ -883,83 +673,89 @@
         </div>
     </section>
 
-    <!-- Navettes Intersites Section -->
-    <section class="section-padding shuttle-section" id="navettes">
+    <!-- Navettes Section -->
+    <section class="section shuttle-section" id="navettes">
         <div class="container">
-            <div class="shuttle-grid">
-                <div class="shuttle-content">
-                    <h3>Navettes Intersites Professionnelles</h3>
-                    <p>Optimisez la mobilité de vos collaborateurs avec notre service de navettes intersites sur mesure. Des solutions de transport régulier, confortable et efficace entre vos différents sites.</p>
-                    
-                    <ul class="shuttle-features">
-                        <li><i class="fas fa-clock"></i> Horaires adaptés à vos besoins</li>
-                        <li><i class="fas fa-shield-alt"></i> Conduite professionnelle et sécurisée</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Circuits optimisés pour gagner du temps</li>
-                        <li><i class="fas fa-users"></i> Capacités adaptées aux équipes</li>
-                        <li><i class="fas fa-wifi"></i> Confort et équipements modernes</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-bus-alt"></i> Demander un devis navettes
-                    </a>
-                </div>
+            <div class="shuttle-content">
+                <h3>Navettes Intersites Professionnelles</h3>
+                <p>Optimisez la mobilité de vos équipes avec notre service de navettes sur mesure.</p>
                 
-                <div class="shuttle-visual">
-                    <div style="text-align: center; color: white; padding: 2rem;">
-                        <i class="fas fa-shuttle-van" style="font-size: 8rem; margin-bottom: 2rem; opacity: 0.9;"></i>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Mobilité d'Entreprise</h3>
-                        <p>Solutions de transport collaborateur optimisées</p>
+                <div class="shuttle-features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Horaires Adaptés</h4>
+                        <p>Adaptation complète à vos plannings</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Sécurité Maximale</h4>
+                        <p>Chauffeurs professionnels diplômés</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Circuits Optimisés</h4>
+                        <p>Itinéraires étudiés pour gagner du temps</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Capacités Adaptées</h4>
+                        <p>De 8 à 30 places disponibles</p>
                     </div>
                 </div>
+                
+                <a href="#contact" class="btn">Demander un devis navettes</a>
             </div>
         </div>
     </section>
 
     <!-- Fleet Section -->
-    <section class="section-padding fleet" id="flotte">
+    <section class="section" id="flotte">
         <div class="container">
             <div class="section-title">
-                <h2>Notre Flotte Professionnelle</h2>
-                <p>Une gamme complète de véhicules modernes pour répondre à tous vos besoins</p>
+                <h2>Notre Flotte</h2>
+                <p>Des véhicules modernes et entretenus pour un service optimal</p>
             </div>
             
             <div class="fleet-grid">
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <div class="vehicle-badge">Disponible</div>
+                        <i class="fas fa-truck"></i>
                     </div>
                     <div class="vehicle-content">
                         <h4>Camions 20T</h4>
-                        <p>Capacité importante pour transports longue distance et volumes conséquents.</p>
-                        <div style="color: var(--accent-teal); font-weight: 600; margin-top: 1rem;">
-                            <i class="fas fa-ruler-combined"></i> Jusqu'à 20 palettes
-                        </div>
+                        <p>Capacité importante pour transports longue distance.</p>
+                        <p style="color: var(--accent); font-weight: 600; margin-top: 10px;">
+                            <i class="fas fa-pallet"></i> Jusqu'à 20 palettes
+                        </p>
                     </div>
                 </div>
                 
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <div class="vehicle-badge">Disponible</div>
+                        <i class="fas fa-shuttle-van"></i>
                     </div>
                     <div class="vehicle-content">
                         <h4>Fourgons 3.5T</h4>
-                        <p>Idéal pour les livraisons urbaines et accès aux zones restreintes.</p>
-                        <div style="color: var(--accent-teal); font-weight: 600; margin-top: 1rem;">
-                            <i class="fas fa-city"></i> Accès centre-ville
-                        </div>
+                        <p>Parfaits pour les livraisons urbaines et accès centre-ville.</p>
+                        <p style="color: var(--accent); font-weight: 600; margin-top: 10px;">
+                            <i class="fas fa-city"></i> Accès zones restreintes
+                        </p>
                     </div>
                 </div>
                 
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <div class="vehicle-badge">Disponible</div>
+                        <i class="fas fa-bus"></i>
                     </div>
                     <div class="vehicle-content">
-                        <h4>Navettes 9 places</h4>
-                        <p>Confort et sécurité pour le transport de vos collaborateurs.</p>
-                        <div style="color: var(--accent-teal); font-weight: 600; margin-top: 1rem;">
-                            <i class="fas fa-users"></i> 9 passagers
-                        </div>
+                        <h4>Navettes 9-30 places</h4>
+                        <p>Confort et sécurité pour le transport de personnel.</p>
+                        <p style="color: var(--accent); font-weight: 600; margin-top: 10px;">
+                            <i class="fas fa-user-friends"></i> 9 à 30 passagers
+                        </p>
                     </div>
                 </div>
             </div>
@@ -967,58 +763,52 @@
     </section>
 
     <!-- Débarras Section -->
-    <section class="section-padding" id="debarras">
+    <section class="section" id="debarras">
         <div class="container">
             <div class="section-title">
-                <h2>Débarras Professionnel Certifié</h2>
-                <p>Une solution complète et écologique pour l'évacuation de vos locaux</p>
+                <h2>Débarras Professionnel</h2>
+                <p>Une solution complète pour l'évacuation de vos locaux</p>
             </div>
             
-            <div class="debarras-process">
-                <div class="process-card">
-                    <div class="process-number">1</div>
-                    <h3>Diagnostic</h3>
-                    <p>Évaluation gratuite sur site et planification personnalisée.</p>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Évaluation</h3>
+                    <p>Diagnostic gratuit sur site et devis personnalisé</p>
                 </div>
                 
-                <div class="process-card">
-                    <div class="process-number">2</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
                     <h3>Évacuation</h3>
-                    <p>Enlèvement complet avec équipements professionnels adaptés.</p>
+                    <p>Enlèvement complet avec équipements adaptés</p>
                 </div>
                 
-                <div class="process-card">
-                    <div class="process-number">3</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
                     <h3>Tri Écologique</h3>
-                    <p>Tri sélectif et recyclage conforme aux normes en vigueur.</p>
+                    <p>Tri sélectif et recyclage respectueux de l'environnement</p>
                 </div>
                 
-                <div class="process-card">
-                    <div class="process-number">4</div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
                     <h3>Certification</h3>
-                    <p>Délivrance du certificat de destruction pour traçabilité.</p>
+                    <p>Certificat de destruction officiel fourni</p>
                 </div>
             </div>
             
-            <div class="certificate-card">
-                <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">
-                    <i class="fas fa-certificate" style="color: var(--accent-teal);"></i>
-                    Certificat de Destruction Garanti
-                </h3>
-                <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
-                    Pour chaque intervention, nous garantissons un certificat de destruction officiel, 
-                    assurant la traçabilité complète et la conformité réglementaire de l'évacuation de vos déchets.
-                </p>
+            <div class="certificate-box">
+                <h3><i class="fas fa-certificate"></i> Certificat de Destruction Garanti</h3>
+                <p style="margin-top: 15px;">Traçabilité complète, conformité réglementaire et respect des normes environnementales.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section-padding contact-section" id="contact">
+    <section class="section contact-section" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2 style="color: white;">Contactez-nous</h2>
-                <p style="color: rgba(255, 255, 255, 0.8);">Discutons de vos besoins logistiques</p>
+                <h2 style="color: white;">Contact</h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Parlez-nous de votre projet</p>
             </div>
             
             <div class="contact-grid">
@@ -1031,8 +821,8 @@
                                 <i class="fas fa-user-tie"></i>
                             </div>
                             <div>
-                                <h4 style="color: white; margin-bottom: 0.25rem;">Riad Mehloul</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7);">Directeur Opérationnel</p>
+                                <h4>Riad Mehloul</h4>
+                                <p>Directeur Opérationnel</p>
                             </div>
                         </div>
                         
@@ -1041,12 +831,8 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
-                                <h4 style="color: white; margin-bottom: 0.25rem;">Téléphone</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7);">
-                                    <a href="tel:+33783673783" style="color: rgba(255, 255, 255, 0.9); text-decoration: none;">
-                                        +33 7 83 67 37 83
-                                    </a>
-                                </p>
+                                <h4>Téléphone</h4>
+                                <p><a href="tel:+33783673783" style="color: white; text-decoration: none;">+33 7 83 67 37 83</a></p>
                             </div>
                         </div>
                         
@@ -1055,12 +841,8 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
-                                <h4 style="color: white; margin-bottom: 0.25rem;">Email</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7);">
-                                    <a href="mailto:luteciatransports@hotmail.fr" style="color: rgba(255, 255, 255, 0.9); text-decoration: none;">
-                                        luteciatransports@hotmail.fr
-                                    </a>
-                                </p>
+                                <h4>Email</h4>
+                                <p><a href="mailto:luteciatransports@hotmail.fr" style="color: white; text-decoration: none;">luteciatransports@hotmail.fr</a></p>
                             </div>
                         </div>
                         
@@ -1069,11 +851,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <h4 style="color: white; margin-bottom: 0.25rem;">Localisation</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7);">
-                                    Le Thillay (95500)<br>
-                                    Paris Nord, France
-                                </p>
+                                <h4>Adresse</h4>
+                                <p>Le Thillay (95500)<br>Paris Nord, France</p>
                             </div>
                         </div>
                     </div>
@@ -1082,21 +861,20 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <input type="text" name="name" placeholder="Votre nom / entreprise" required>
-                        <input type="email" name="email" placeholder="Votre adresse email" required>
-                        <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
+                        <input type="email" name="email" placeholder="Votre email" required>
+                        <input type="tel" name="phone" placeholder="Votre téléphone">
                         
                         <select name="service" required>
-                            <option value="">Sélectionnez un service</option>
+                            <option value="">Choisir un service</option>
                             <option value="transport">Transport Logistique</option>
                             <option value="navettes">Navettes Intersites</option>
                             <option value="debarras">Débarras Professionnel</option>
-                            <option value="autres">Autres services</option>
                         </select>
                         
-                        <textarea name="message" placeholder="Décrivez votre projet..." rows="4" required></textarea>
+                        <textarea name="message" placeholder="Votre message..." required></textarea>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                        <button type="submit" class="btn" style="background: var(--accent); color: var(--primary); width: 100%;">
+                            Envoyer la demande
                         </button>
                     </form>
                 </div>
@@ -1110,141 +888,75 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo">LUTECIA<span>TRANSPORTS</span></div>
-                    <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem; max-width: 300px;">
-                        Votre partenaire logistique premium pour le transport professionnel, les navettes intersites et le débarras certifié.
-                    </p>
+                    <p style="margin-top: 20px;">Expert en transport logistique et solutions mobilité pour entreprises.</p>
                 </div>
                 
                 <div>
-                    <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem;">Services</h4>
-                    <ul style="list-style: none; color: rgba(255, 255, 255, 0.7);">
-                        <li style="margin-bottom: 0.75rem;">Transport Logistique</li>
-                        <li style="margin-bottom: 0.75rem;">Navettes Intersites</li>
-                        <li style="margin-bottom: 0.75rem;">Débarras Professionnel</li>
-                        <li style="margin-bottom: 0.75rem;">Solutions sur mesure</li>
+                    <h4 style="margin-bottom: 20px; font-size: 18px;">Services</h4>
+                    <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                        <li style="margin-bottom: 10px;">Transport Logistique</li>
+                        <li style="margin-bottom: 10px;">Navettes Intersites</li>
+                        <li style="margin-bottom: 10px;">Débarras Professionnel</li>
+                        <li>Solutions sur mesure</li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem;">Contact</h4>
-                    <div style="color: rgba(255, 255, 255, 0.7);">
-                        <p style="margin-bottom: 0.75rem;">
-                            <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
-                            +33 7 83 67 37 83
-                        </p>
-                        <p style="margin-bottom: 0.75rem;">
-                            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
-                            luteciatransports@hotmail.fr
-                        </p>
-                        <p>
-                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
-                            Le Thillay (95500)
-                        </p>
+                    <h4 style="margin-bottom: 20px; font-size: 18px;">Contact</h4>
+                    <div style="color: rgba(255, 255, 255, 0.8);">
+                        <p style="margin-bottom: 10px;"><i class="fas fa-phone"></i> +33 7 83 67 37 83</p>
+                        <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> luteciatransports@hotmail.fr</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Le Thillay (95500)</p>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                &copy; 2024 LUTECIA TRANSPORTS. Tous droits réservés. | Expert Transport Nord Parisien
+                &copy; 2024 LUTECIA TRANSPORTS. Tous droits réservés.
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialisation
+        // Script simple et efficace
         document.addEventListener('DOMContentLoaded', function() {
-            // Navigation mobile
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            const navItems = document.querySelectorAll('.nav-links a');
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
             
-            mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                this.innerHTML = navLinks.classList.contains('active') 
                     ? '<i class="fas fa-times"></i>'
                     : '<i class="fas fa-bars"></i>';
             });
             
-            // Fermer menu au clic
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
+            // Fermer menu au clic sur un lien
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 });
             });
             
-            // Header scroll effect
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Active navigation
-            const sections = document.querySelectorAll('section[id]');
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 200)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href').substring(1) === current) {
-                        item.classList.add('active');
-                    }
-                });
-            });
-            
-            // Animations au scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observer les éléments
-            document.querySelectorAll('.animated').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Form submission
+            // Form submission simple
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
+                    const originalText = submitBtn.textContent;
                     
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                    submitBtn.textContent = 'Envoi en cours...';
                     submitBtn.disabled = true;
                     
-                    // Simulation
+                    // Simulation d'envoi
                     setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                        submitBtn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
-                        
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                            submitBtn.style.background = '';
-                            this.reset();
-                        }, 3000);
-                    }, 1500);
+                        alert('Merci ! Votre demande a été envoyée. Nous vous contacterons rapidement.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        this.reset();
+                    }, 1000);
                 });
             }
             
@@ -1258,7 +970,7 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const headerHeight = header.offsetHeight;
+                        const headerHeight = document.querySelector('header').offsetHeight;
                         const targetPosition = targetElement.offsetTop - headerHeight;
                         
                         window.scrollTo({
@@ -1267,11 +979,6 @@
                         });
                     }
                 });
-            });
-            
-            // Add animated class to cards
-            document.querySelectorAll('.service-card, .vehicle-card, .process-card').forEach(card => {
-                card.classList.add('animated');
             });
         });
     </script>
