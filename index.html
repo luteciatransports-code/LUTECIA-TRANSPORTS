@@ -52,8 +52,8 @@
         }
         
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(26, 147, 111, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(26, 147, 111, 0.6); }
+            0%, 100% { box-shadow: 0 0 20px rgba(26, 147, 111, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(26, 147, 111, 0.8); }
         }
         
         @keyframes roadLines {
@@ -63,16 +63,32 @@
         
         @keyframes truckDrive {
             0% { 
-                transform: translateX(-100px) translateY(0) rotate(0deg); 
+                transform: translateX(-200px) translateY(0) rotate(0deg); 
                 opacity: 0;
             }
             10% { opacity: 1; }
             80% { 
-                transform: translateX(calc(100vw + 100px)) translateY(-5px) rotate(1deg); 
+                transform: translateX(calc(100vw + 200px)) translateY(-5px) rotate(1deg); 
                 opacity: 1;
             }
             100% { 
-                transform: translateX(calc(100vw + 200px)) translateY(-5px) rotate(1deg); 
+                transform: translateX(calc(100vw + 300px)) translateY(-5px) rotate(1deg); 
+                opacity: 0;
+            }
+        }
+        
+        @keyframes truckDriveReverse {
+            0% { 
+                transform: translateX(calc(100vw + 200px)) translateY(0) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            80% { 
+                transform: translateX(-200px) translateY(-5px) rotate(-1deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(-300px) translateY(-5px) rotate(-1deg); 
                 opacity: 0;
             }
         }
@@ -170,8 +186,8 @@
         }
         
         .logo-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--light);
             border-radius: var(--radius-md);
@@ -179,8 +195,8 @@
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 24px;
-            box-shadow: var(--shadow-md);
+            font-size: 32px;
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
             transition: var(--transition);
@@ -209,11 +225,12 @@
         .logo-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 28px;
+            font-size: 36px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         /* Navigation interactive améliorée */
@@ -293,7 +310,7 @@
             display: flex;
             align-items: center;
             background: 
-                linear-gradient(rgba(10, 36, 99, 0.9), rgba(26, 147, 111, 0.9)),
+                linear-gradient(rgba(10, 36, 99, 0.92), rgba(26, 147, 111, 0.92)),
                 url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -333,35 +350,103 @@
             z-index: 2;
         }
         
-        /* Camions animés améliorés */
+        /* Camions animés améliorés - PLUS DE CAMIONS DE DIFFÉRENTES COULEURS */
         .animated-truck {
             position: absolute;
             bottom: 40px;
             left: -200px;
             font-size: 70px;
-            color: var(--light);
-            animation: truckDrive 30s linear infinite;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+            animation: truckDrive 20s linear infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
             z-index: 3;
             opacity: 0;
         }
         
         .animated-truck:nth-child(1) { 
             animation-delay: 0s; 
-            color: var(--light); 
+            color: #FFFFFF; 
             bottom: 60px;
+            font-size: 80px;
         }
+        
         .animated-truck:nth-child(2) { 
-            animation-delay: 10s; 
+            animation-delay: 3s; 
             color: var(--accent-light); 
             bottom: 45px; 
-            font-size: 60px; 
+            font-size: 70px; 
+            animation-duration: 22s;
         }
+        
         .animated-truck:nth-child(3) { 
-            animation-delay: 20s; 
+            animation-delay: 6s; 
             color: var(--secondary-light); 
             bottom: 55px; 
-            font-size: 55px; 
+            font-size: 65px;
+            animation-duration: 24s;
+        }
+        
+        .animated-truck:nth-child(4) { 
+            animation-delay: 9s; 
+            color: #FFD166; 
+            bottom: 50px; 
+            font-size: 60px;
+            animation-duration: 26s;
+        }
+        
+        .animated-truck:nth-child(5) { 
+            animation-delay: 12s; 
+            color: #06D6A0; 
+            bottom: 65px; 
+            font-size: 75px;
+            animation-duration: 18s;
+        }
+        
+        .animated-truck:nth-child(6) { 
+            animation-delay: 15s; 
+            color: #EF476F; 
+            bottom: 40px; 
+            font-size: 55px;
+            animation-duration: 28s;
+        }
+        
+        /* Camions dans l'autre sens */
+        .animated-truck-reverse {
+            position: absolute;
+            bottom: 40px;
+            left: calc(100vw + 200px);
+            font-size: 70px;
+            animation: truckDriveReverse 25s linear infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            z-index: 3;
+            opacity: 0;
+        }
+        
+        .animated-truck-reverse:nth-child(1) { 
+            animation-delay: 1s; 
+            color: #118AB2; 
+            bottom: 55px;
+            font-size: 85px;
+        }
+        
+        .animated-truck-reverse:nth-child(2) { 
+            animation-delay: 4s; 
+            color: #FFD166; 
+            bottom: 45px; 
+            font-size: 68px;
+        }
+        
+        .animated-truck-reverse:nth-child(3) { 
+            animation-delay: 7s; 
+            color: #EF476F; 
+            bottom: 60px; 
+            font-size: 72px;
+        }
+        
+        .animated-truck-reverse:nth-child(4) { 
+            animation-delay: 10s; 
+            color: var(--secondary-light); 
+            bottom: 50px; 
+            font-size: 62px;
         }
         
         /* Contenu hero */
@@ -372,24 +457,27 @@
         }
         
         .hero h1 {
-            font-size: 64px;
+            font-size: 72px;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
             animation: fadeInUp 1.2s ease;
-            background: linear-gradient(to right, var(--light), var(--secondary-light));
+            background: linear-gradient(to right, var(--light), #FFD166);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
         
         .hero-subtitle {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 50px;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 750px;
             animation: fadeInUp 1.2s ease 0.2s both;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.5px;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
         }
         
         /* Stats animées améliorées */
@@ -403,11 +491,11 @@
         
         .stat-item {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
             padding: 30px 20px;
             border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.25);
             transition: var(--transition);
             cursor: pointer;
             position: relative;
@@ -421,7 +509,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: 0.5s;
         }
         
@@ -430,7 +518,7 @@
         }
         
         .stat-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-10px) scale(1.05);
             box-shadow: var(--shadow-xl);
             border-color: var(--accent);
@@ -442,7 +530,7 @@
             color: var(--accent);
             margin-bottom: 10px;
             font-family: 'Montserrat', sans-serif;
-            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.5);
         }
         
         .stat-label {
@@ -465,10 +553,10 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            padding: 18px 40px;
+            padding: 20px 45px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 17px;
+            font-size: 18px;
             text-decoration: none;
             border-radius: var(--radius-md);
             border: none;
@@ -497,7 +585,7 @@
         }
         
         .btn i {
-            font-size: 20px;
+            font-size: 22px;
             transition: var(--transition);
         }
         
@@ -510,12 +598,12 @@
         .btn-secondary {
             background: transparent;
             color: var(--light);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             border-color: var(--light);
             transform: translateY(-5px) scale(1.05);
             box-shadow: var(--shadow-xl);
@@ -538,7 +626,7 @@
         }
         
         .section-title h2 {
-            font-size: 48px;
+            font-size: 52px;
             color: var(--primary);
             margin-bottom: 25px;
             position: relative;
@@ -546,6 +634,8 @@
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
         
         .section-title h2::after {
@@ -729,7 +819,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1519003722824-194d4455a60e?auto=format&fit=crop&w=1920&q=80&blend=0A2463&blend-opacity=0.03');
+            background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80&blend=0A2463&blend-opacity=0.05');
             background-size: cover;
             background-position: center;
             z-index: 0;
@@ -826,7 +916,7 @@
             font-size: 16px;
         }
         
-        /* Gallery Section avec effets de zoom - IMAGES CORRIGÉES */
+        /* Gallery Section avec effets de zoom - TOUTES LES IMAGES CORRIGÉES ET ADAPTÉES */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -995,7 +1085,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://images.unsplash.com/photo-1519003722824-194d4455a60e?auto=format&fit=crop&w=1920&q=80&blend=0A2463&blend-mode=multiply');
+            background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80&blend=0A2463&blend-mode=multiply');
             background-size: cover;
             background-position: center;
             opacity: 0.1;
@@ -1110,7 +1200,7 @@
             }
             
             .hero h1 {
-                font-size: 52px;
+                font-size: 56px;
             }
             
             .section {
@@ -1174,10 +1264,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-animations {
-                display: none;
-            }
-            
             .hero-btns {
                 flex-direction: column;
             }
@@ -1205,6 +1291,16 @@
             
             .solutions-text {
                 order: 2;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .logo-text {
+                font-size: 28px;
             }
         }
         
@@ -1281,11 +1377,12 @@
         .footer-logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 36px;
+            font-size: 42px;
             margin-bottom: 25px;
             background: linear-gradient(to right, var(--light), var(--secondary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
         
         .footer-logo span {
@@ -1348,14 +1445,38 @@
     <section class="hero" id="accueil">
         <div class="road"></div>
         
+        <!-- Camions dans un sens (6 camions) -->
         <div class="animated-truck">
             <i class="fas fa-truck-moving"></i>
+        </div>
+        <div class="animated-truck">
+            <i class="fas fa-truck"></i>
+        </div>
+        <div class="animated-truck">
+            <i class="fas fa-truck-loading"></i>
         </div>
         <div class="animated-truck">
             <i class="fas fa-trailer"></i>
         </div>
         <div class="animated-truck">
+            <i class="fas fa-truck-pickup"></i>
+        </div>
+        <div class="animated-truck">
+            <i class="fas fa-shipping-fast"></i>
+        </div>
+        
+        <!-- Camions dans l'autre sens (4 camions) -->
+        <div class="animated-truck-reverse">
+            <i class="fas fa-truck-moving"></i>
+        </div>
+        <div class="animated-truck-reverse">
+            <i class="fas fa-truck"></i>
+        </div>
+        <div class="animated-truck-reverse">
             <i class="fas fa-truck-loading"></i>
+        </div>
+        <div class="animated-truck-reverse">
+            <i class="fas fa-trailer"></i>
         </div>
         
         <div class="container">
@@ -1557,7 +1678,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section - TOUTES LES IMAGES CORRIGÉES -->
+    <!-- Gallery Section - TOUTES LES IMAGES CORRIGÉES ET ADAPTÉES -->
     <section class="section" id="galerie">
         <div class="container">
             <div class="section-title">
@@ -1593,12 +1714,12 @@
                     </div>
                 </div>
                 
-                <!-- IMAGE 4 : Tracteur routier avec remorque (remplace le bus) -->
+                <!-- IMAGE 4 : Livraison urbaine avec fourgon -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tracteur routier avec remorque">
+                    <img src="https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Livraison urbaine">
                     <div class="gallery-overlay">
-                        <h4>Transport Routier Lourd</h4>
-                        <p>Tracteurs et remorques modernes</p>
+                        <h4>Livraison Urbaine</h4>
+                        <p>Fourgons adaptés au centre-ville</p>
                     </div>
                 </div>
                 
@@ -1611,12 +1732,12 @@
                     </div>
                 </div>
                 
-                <!-- IMAGE 6 : Planification logistique -->
+                <!-- IMAGE 6 : Planification logistique adaptée -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planification transport">
+                    <img src="https://images.unsplash.com/photo-1615840287214-7ffbbc36c827?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planification transport routier">
                     <div class="gallery-overlay">
-                        <h4>Planification Avancée</h4>
-                        <p>Optimisation des itinéraires</p>
+                        <h4>Planification Itinéraires</h4>
+                        <p>Optimisation des trajets routiers</p>
                     </div>
                 </div>
             </div>
